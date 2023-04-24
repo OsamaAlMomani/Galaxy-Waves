@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Galaxy.Core.IRepositoryDesignPattern
 {
+<<<<<<< HEAD
     public interface ISharedMethod <T> where T : class
     {
         public IEnumerable<T> GetAllAsync(T entity);
@@ -16,5 +17,9 @@ namespace Galaxy.Core.IRepositoryDesignPattern
         public Task<T> HardDeleteAsync(T entity);
 
 
+=======
+    internal interface ISharedMethod
+    {
+>>>>>>> 9c8cd6270ab129e0a49971a768fdf8ba8a048ef9
     }
 }
