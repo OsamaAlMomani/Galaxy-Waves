@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Galaxy.Core.Models.Student_Profile;
 using Galaxy.Core.ViewModelComponent;
+using GalaxyWaves.Models;
 
 namespace GalaxyWaves.Data
 {
@@ -25,5 +26,7 @@ namespace GalaxyWaves.Data
         public DbSet<UserProfile> UserProfile { get; set; } = default!;
         public DbSet<LoginViewModel> LoginViewModel { get; set; } = default!;
         public DbSet<RegisterViewModel> RegisterViewModel { get; set; } = default!;
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

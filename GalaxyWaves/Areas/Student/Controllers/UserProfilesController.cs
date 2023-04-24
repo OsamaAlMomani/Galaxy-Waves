@@ -14,7 +14,6 @@ namespace GalaxyWaves.Areas.Student.Controllers
     public class UserProfilesController : Controller
     {
         private readonly AppDbContext _context;
-
         public UserProfilesController(AppDbContext context)
         {
             _context = context;
