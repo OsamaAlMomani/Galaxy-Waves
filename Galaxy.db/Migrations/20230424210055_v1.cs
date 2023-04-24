@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GalaxyWaves.Migrations
+namespace Galaxy.db.Migrations
 {
     /// <inheritdoc />
-    public partial class dds : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -82,15 +82,28 @@ namespace GalaxyWaves.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Position",
+                name: "LoginViewModel",
                 columns: table => new
                 {
-                    positionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    positionName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Position", x => x.positionId);
+                    table.PrimaryKey("PK_LoginViewModel", x => x.EmailAddress);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegisterViewModel",
+                columns: table => new
+                {
+                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PasswordConfirmation = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterViewModel", x => x.EmailAddress);
                 });
 
             migrationBuilder.CreateTable(
@@ -200,14 +213,14 @@ namespace GalaxyWaves.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "C_Level",
+                name: "Teacher_Profile",
                 columns: table => new
                 {
-                    cID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    cFirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    cLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    cEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    cPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TeacherFirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Img = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DOB = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Sex = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -216,101 +229,25 @@ namespace GalaxyWaves.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IBan = table.Column<long>(type: "bigint", nullable: false),
-                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    positionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    positionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     equipmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_C_Level", x => x.cID);
+                    table.PrimaryKey("PK_Teacher_Profile", x => x.TeacherID);
                     table.ForeignKey(
-                        name: "FK_C_Level_Department_DepartmentId",
+                        name: "FK_Teacher_Profile_Department_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Department",
                         principalColumn: "DepartmentId");
                     table.ForeignKey(
-                        name: "FK_C_Level_Position_positionId",
-                        column: x => x.positionId,
-                        principalTable: "Position",
-                        principalColumn: "positionId");
-                    table.ForeignKey(
-                        name: "FK_C_Level_equipment_equipmentId",
+                        name: "FK_Teacher_Profile_equipment_equipmentId",
                         column: x => x.equipmentId,
                         principalTable: "equipment",
                         principalColumn: "equipmentId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "guide",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Img = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DOB = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    JDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IBan = table.Column<long>(type: "bigint", nullable: false),
-                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    positionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    positionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    equipmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_guide", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_guide_Department_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Department",
-                        principalColumn: "DepartmentId");
-                    table.ForeignKey(
-                        name: "FK_guide_Position_positionId",
-                        column: x => x.positionId,
-                        principalTable: "Position",
-                        principalColumn: "positionId");
-                    table.ForeignKey(
-                        name: "FK_guide_equipment_equipmentId",
-                        column: x => x.equipmentId,
-                        principalTable: "equipment",
-                        principalColumn: "equipmentId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "course",
-                columns: table => new
-                {
-                    courseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CourseDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CoursePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GuideID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_course", x => x.courseId);
-                    table.ForeignKey(
-                        name: "FK_course_guide_GuideID",
-                        column: x => x.GuideID,
-                        principalTable: "guide",
-                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateIndex(
@@ -353,39 +290,14 @@ namespace GalaxyWaves.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_C_Level_DepartmentId",
-                table: "C_Level",
+                name: "IX_Teacher_Profile_DepartmentId",
+                table: "Teacher_Profile",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_C_Level_equipmentId",
-                table: "C_Level",
+                name: "IX_Teacher_Profile_equipmentId",
+                table: "Teacher_Profile",
                 column: "equipmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_C_Level_positionId",
-                table: "C_Level",
-                column: "positionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_course_GuideID",
-                table: "course",
-                column: "GuideID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_guide_DepartmentId",
-                table: "guide",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_guide_equipmentId",
-                table: "guide",
-                column: "equipmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_guide_positionId",
-                table: "guide",
-                column: "positionId");
         }
 
         /// <inheritdoc />
@@ -407,10 +319,13 @@ namespace GalaxyWaves.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "C_Level");
+                name: "LoginViewModel");
 
             migrationBuilder.DropTable(
-                name: "course");
+                name: "RegisterViewModel");
+
+            migrationBuilder.DropTable(
+                name: "Teacher_Profile");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -419,13 +334,7 @@ namespace GalaxyWaves.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "guide");
-
-            migrationBuilder.DropTable(
                 name: "Department");
-
-            migrationBuilder.DropTable(
-                name: "Position");
 
             migrationBuilder.DropTable(
                 name: "equipment");

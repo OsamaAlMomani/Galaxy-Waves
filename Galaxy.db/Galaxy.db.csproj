@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Galaxy.Core\Galaxy.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IRepository\" />
+  </ItemGroup>
+
 </Project>
