@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Galaxy.Core.Models.C_Level.Tools
+namespace Galaxy.Core.Models.AdminSite
 {
     public class Equipment
     {

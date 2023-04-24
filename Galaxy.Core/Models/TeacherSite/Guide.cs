@@ -1,34 +1,33 @@
-﻿
-using Galaxy.Core.Models.C_Level.Departments;
-using Galaxy.Core.Models.C_Level.Tools;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Galaxy.Core.Models.AdminSite;
 
-namespace Galaxy.Core.Models.C_Level.Profile
+namespace Galaxy.Core.Models.Guide
 {
-    public class CLVLProfile
+    public class Guide
     {
         [Key]
-        public Guid cID { get; set; }
+        public Guid ID { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "First Name ")]
-        public string? cFirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Last Name ")]
-        public string? cLastName { get; set; }
+        public string? LastName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        public string? cEmail { get; set; }
+        public string? Email { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Phone Number")]
-        public string? cPhone { get; set; }
+        public string? Phone { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Profile Picture")]
+
         public string? Img { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
@@ -72,27 +71,22 @@ namespace Galaxy.Core.Models.C_Level.Profile
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Bank IBan")]
-        public Int64 IBan { get; set; }
+        public long IBan { get; set; }
 
-                //**---------------**\\
+        //**---------------**\\
 
         // Relationships with other parts of the Company
-            
-                    // Department Table 
+
+        // Department Table 
         [ForeignKey("DepartmentName")]
+        [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "C Level Department")]
         public string? DepartmentName { get; set; }
         public Department? department { get; set; }
-                    // Position Table
-        [ForeignKey("positionName")]
-        [Display(Name = "Position Name")]
-        public string? positionName { get; set; }
-        public Position? position { get; set; }
-                    // Equipment Table
+        // Equipment Table
         [ForeignKey("equipmentId")]
-
         public Guid equipmentId { get; set; }
-        public Equipment? equipment { get; set; }
-               //**---------------**\\ 
+        public GuideEquipment? equipment { get; set; }
+        //**---------------**\\ 
     }
 }

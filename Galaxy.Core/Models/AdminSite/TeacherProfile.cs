@@ -1,39 +1,31 @@
-﻿using Galaxy.Core.Models.C_Level.Departments;
-
-using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Galaxy.Core.Models.Guide
+namespace Galaxy.Core.Models.AdminSite
 {
-    public class Guide
+    public class TeacherProfile
     {
         [Key]
-        public Guid ID { get; set; }
+        public Guid TeacherID { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "First Name ")]
-        public string? FirstName { get; set; }
+        public string? TeacherFirstName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Last Name ")]
-        public string? LastName { get; set; }
+        public string? TeacherLastName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        public string? Email { get; set; }
+        public string? TeacherEmail { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Phone Number")]
-        public string? Phone { get; set; }
+        public string? TeacherPhone { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Profile Picture")]
-
         public string? Img { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
@@ -71,34 +63,25 @@ namespace Galaxy.Core.Models.Guide
         [Display(Name = "Salary")]
         public decimal Salary { get; set; }
 
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Password")]
-        public string? Password { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Bank IBan")]
-        public long IBan { get; set; }
+        public Int64 IBan { get; set; }
 
-        //**---------------**\\
+                //**---------------**\\
 
         // Relationships with other parts of the Company
-
-        // Department Table 
+            
+                    // Department Table 
         [ForeignKey("DepartmentName")]
-        [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "C Level Department")]
         public string? DepartmentName { get; set; }
         public Department? department { get; set; }
-        // Position Table
-        [ForeignKey("positionName")]
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Position Name")]
-        public string? positionName { get; set; }
-        public Position? position { get; set; }
-        // Equipment Table
+                    // Equipment Table
         [ForeignKey("equipmentId")]
+
         public Guid equipmentId { get; set; }
-        public GuideEquipment? equipment { get; set; }
-        //**---------------**\\ 
+        public Equipment? equipment { get; set; }
+               //**---------------**\\ 
     }
 }

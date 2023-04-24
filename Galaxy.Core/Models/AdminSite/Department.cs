@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Galaxy.Core.Models.C_Level.Departments
+namespace Galaxy.Core.Models.AdminSite
 {
     public class Department
     {

@@ -47,8 +47,8 @@ namespace Galaxy.Core.Models.Student_Profile
 
 
         [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Password")]
-        public string? Password { get; set; }
+        [Display(Name = "Card Name")]
+        public string? CardName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Credit Card")]
@@ -62,9 +62,7 @@ namespace Galaxy.Core.Models.Student_Profile
         [Display(Name = "EXP DATE")]
         public DateTime CardEXP { get; set; }
 
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Card Name")]
-        public string? CardName { get; set; }
+
         
 
     }
