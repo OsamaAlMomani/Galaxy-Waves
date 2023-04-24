@@ -1,5 +1,4 @@
-
-using GalaxyWaves.Data;
+using Galaxy.db;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
