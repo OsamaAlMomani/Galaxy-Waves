@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Galaxy.Core.Models.C_Level.Profile.CLVLProfile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.positionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.equipment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.positionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.equipment.Material)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.cID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.cID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.cID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿
+Controller:	
+{
+	CRUD For Equipments
+	CRUD For Teachers
+}
+
+View:
+{
+	Equipment.
+		{
+			InCome,
+			OutCome,
+			eq.Name => MostSall,
+			eq.Rate => MostSall
+		}
+	Teacher.
+		{
+			Teacher.Name => Most Activce,
+			Teacher.Name => Most Selling,
+			Teacher.Name => Highest Rate,
+			Teacher.Name => Highest Rate,
+		}
+	Department.
+		{
+			Department.Name => Most Students,
+			Department.Name => Most Courses,
+			Department.Name => Most Teachers,
+			Department.Name => Most Income
+		}
+}
+
+Model:
+{
+	Sales,
+	Teacher,
+	Equipment,
+	Students
+}

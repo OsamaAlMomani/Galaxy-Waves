@@ -1,0 +1,28 @@
+﻿using Galaxy.Core.Models.C_Level.Departments;
+using Galaxy.Core.Models.C_Level.Profile;
+using Galaxy.Core.Models.C_Level.Tools;
+using Galaxy.Core.Models.Guide;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Galaxy.Core.Models.Student_Profile;
+using Galaxy.Core.ViewModelComponent;
+
+namespace GalaxyWaves.Data
+{
+    public class AppDbContext:IdentityDbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+        public DbSet<CLVLProfile> C_Level { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Position> Position { get; set; }
+        public DbSet<Equipment> equipment { get; set; }
+        public DbSet<Course> course { get; set; }
+        public DbSet<Guide> guide { get; set; }
+        public DbSet<Galaxy.Core.Models.Student_Profile.UserProfile> UserProfile { get; set; } = default!;
+        public DbSet<Galaxy.Core.ViewModelComponent.LoginViewModel> LoginViewModel { get; set; } = default!;
+        public DbSet<Galaxy.Core.ViewModelComponent.RegisterViewModel> RegisterViewModel { get; set; } = default!;
+    }
+}
