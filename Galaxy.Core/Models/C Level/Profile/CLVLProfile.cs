@@ -1,4 +1,5 @@
-﻿using Galaxy.Core.Models.C_Level.Departments;
+﻿
+using Galaxy.Core.Models.C_Level.Departments;
 using Galaxy.Core.Models.C_Level.Tools;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

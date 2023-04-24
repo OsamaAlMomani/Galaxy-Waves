@@ -1,0 +1,69 @@
+﻿@model Galaxy.Core.Models.Guide.GuideEquipment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>GuideEquipment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="equipmentId" />
+            <div class="form-group">
+                <label asp-for="equipmentName" class="control-label"></label>
+                <input asp-for="equipmentName" class="form-control" />
+                <span asp-validation-for="equipmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipmentImg" class="control-label"></label>
+                <input asp-for="equipmentImg" class="form-control" />
+                <span asp-validation-for="equipmentImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipmentColor" class="control-label"></label>
+                <input asp-for="equipmentColor" class="form-control" />
+                <span asp-validation-for="equipmentColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipmentType" class="control-label"></label>
+                <input asp-for="equipmentType" class="form-control" />
+                <span asp-validation-for="equipmentType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipmentBrand" class="control-label"></label>
+                <input asp-for="equipmentBrand" class="form-control" />
+                <span asp-validation-for="equipmentBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Material" class="control-label"></label>
+                <textarea asp-for="Material" class="form-control"></textarea>
+                <span asp-validation-for="Material" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hidden" class="control-label"></label>
+                <input asp-for="Hidden" class="form-control" />
+                <span asp-validation-for="Hidden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

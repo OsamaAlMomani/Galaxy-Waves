@@ -1,5 +1,5 @@
 ﻿using Galaxy.Core.Models.C_Level.Departments;
-using Galaxy.Core.Models.C_Level.Tools;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +12,7 @@ namespace Galaxy.Core.Models.Guide
 {
     public class Guide
     {
+        [Key]
         public Guid ID { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "First Name ")]
@@ -97,7 +98,7 @@ namespace Galaxy.Core.Models.Guide
         // Equipment Table
         [ForeignKey("equipmentId")]
         public Guid equipmentId { get; set; }
-        public Equipment? equipment { get; set; }
+        public GuideEquipment? equipment { get; set; }
         //**---------------**\\ 
     }
 }

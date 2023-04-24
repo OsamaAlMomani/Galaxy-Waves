@@ -19,10 +19,11 @@ namespace GalaxyWaves.Data
         public DbSet<Department> Department { get; set; }
         public DbSet<Position> Position { get; set; }
         public DbSet<Equipment> equipment { get; set; }
+        public DbSet<GuideEquipment> guideEquipment { get; set; }
         public DbSet<Course> course { get; set; }
         public DbSet<Guide> guide { get; set; }
-        public DbSet<Galaxy.Core.Models.Student_Profile.UserProfile> UserProfile { get; set; } = default!;
-        public DbSet<Galaxy.Core.ViewModelComponent.LoginViewModel> LoginViewModel { get; set; } = default!;
-        public DbSet<Galaxy.Core.ViewModelComponent.RegisterViewModel> RegisterViewModel { get; set; } = default!;
+        public DbSet<UserProfile> UserProfile { get; set; } = default!;
+        public DbSet<LoginViewModel> LoginViewModel { get; set; } = default!;
+        public DbSet<RegisterViewModel> RegisterViewModel { get; set; } = default!;
     }
 }

@@ -10,6 +10,7 @@ namespace Galaxy.Core.Models.Guide
 {
     public class Course
     {
+        [Key]
         public Guid courseId { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         public string? CourseName { get; set; }
