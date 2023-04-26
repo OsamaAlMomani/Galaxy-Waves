@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyWaves", "GalaxyWaves.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Galaxy.Core", "..\Galaxy.Core\Galaxy.Core.csproj", "{AC107642-00F1-4D53-96FE-47DBD19E83F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Galaxy.db", "..\Galaxy.db\Galaxy.db.csproj", "{C7E1F13C-5A03-41BC-8BCF-A5BEA3D4CC9B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0887CDD9-D364-4928-B914-A59830E62050}"
 	ProjectSection(SolutionItems) = preProject
 		What I Learnt .txt = What I Learnt .txt
@@ -28,10 +26,6 @@ Global
 		{AC107642-00F1-4D53-96FE-47DBD19E83F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC107642-00F1-4D53-96FE-47DBD19E83F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC107642-00F1-4D53-96FE-47DBD19E83F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7E1F13C-5A03-41BC-8BCF-A5BEA3D4CC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7E1F13C-5A03-41BC-8BCF-A5BEA3D4CC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7E1F13C-5A03-41BC-8BCF-A5BEA3D4CC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7E1F13C-5A03-41BC-8BCF-A5BEA3D4CC9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

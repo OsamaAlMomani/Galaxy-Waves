@@ -60,10 +60,7 @@ namespace Galaxy.Core.Models.Student_Profile
         public int CVV { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "EXP DATE")]
-        public DateTime CardEXP { get; set; }
-
-
-        
+        public DateTime CardEXP { get; set; }  
 
     }
 }
