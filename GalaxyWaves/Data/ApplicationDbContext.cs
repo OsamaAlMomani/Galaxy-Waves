@@ -14,12 +14,7 @@ namespace GalaxyWaves.Data
         {
 
         }
-        public DbSet<TeacherProfile> Teacher_Profile { get; set; }
-        public DbSet<Department> Department { get; set; }
-        public DbSet<Equipment> equipment { get; set; }
-        public DbSet<LoginViewModel> LoginViewModel { get; set; }
-        public DbSet<RegisterViewModel> RegisterViewModel { get; set; }
-        public DbSet<Course> Course { get; set; } = default!;
+
         //public DbSet<PaymentMethod> paymentmethod { get; set; }
 
     }
