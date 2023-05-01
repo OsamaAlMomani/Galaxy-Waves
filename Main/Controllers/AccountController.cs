@@ -1,8 +1,11 @@
 ﻿using AspNetCore;
 using Galaxy.Core.Models.AdminSite.Role;
+using Galaxy.Core.ViewModelComponent;
 using Galaxy.Data.DataAccess;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Main.Controllers
@@ -12,7 +15,7 @@ namespace Main.Controllers
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
         private RoleManager<IdentityRole> roleManager;
-        public AccountController(UserManager<IdentityUser>user,SignInManager<IdentityUser>signIn, RoleManager<IdentityRole> role )
+        public AccountController(UserManager<IdentityUser> user, SignInManager<IdentityUser> signIn, RoleManager<IdentityRole> role)
         {
             userManager = user;
             signInManager = signIn;
@@ -38,7 +41,7 @@ namespace Main.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole (CreateRole role)
+        public async Task<IActionResult> CreateRole(CreateRole role)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +67,7 @@ namespace Main.Controllers
         [HttpPost]
         public async Task<IActionResult> EditRole(EditeRole role)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && role.RoleId != null)
             {
                 var result = await roleManager.FindByIdAsync(role.RoleId);
                 if (result != null)
@@ -82,7 +85,7 @@ namespace Main.Controllers
             return View(role);
         }
         [HttpPost]
-        public async Task<IActionResult>DeleteRole(EditeRole role)
+        public async Task<IActionResult> DeleteRole(EditeRole role)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +103,58 @@ namespace Main.Controllers
 
         #region user 
         // login
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> login (LoginViewModel user)
+        {
+            if (ModelState.IsValid && user.Password != null && user.EmailAddress!=null)
+            {
+                var result = await signInManager.PasswordSignInAsync(user.EmailAddress, user.Password,false,false);
+                if (result.Succeeded)
+                    return RedirectToAction("Index", "Home");
+                return View(user);
+            }
+            return View(user);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register ()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> register(RegisterViewModel user)
+        {
+            if (!ModelState.IsValid)
+            {
+                IdentityUser I_user = new IdentityUser
+                {
+                    UserName = user.EmailAddress,
+                    Email =user.EmailAddress,
+                    PasswordHash = user.Password,
+                };
+                var result = await userManager.CreateAsync(I_user);
+                if (result.Succeeded) return RedirectToAction("Index", "Home");
+                return View(user);
+            }
+            return View(user);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
         // create account 
         #endregion
 
