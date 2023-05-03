@@ -1,12 +1,8 @@
-﻿using AspNetCore;
-using Galaxy.Core.Models.AdminSite.Role;
+﻿using Galaxy.Core.Models.AdminSite.Role;
 using Galaxy.Core.ViewModelComponent;
-using Galaxy.Data.DataAccess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Main.Controllers
 {
@@ -25,16 +21,19 @@ namespace Main.Controllers
 
         // create , edit , delete 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult CreateRole()
         {
             return View();
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult EditRole()
         {
             return View();
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult DeleteRole()
         {
             return View();
@@ -111,11 +110,11 @@ namespace Main.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> login (LoginViewModel user)
+        public async Task<IActionResult> login(LoginViewModel user)
         {
-            if (ModelState.IsValid && user.Password != null && user.EmailAddress!=null)
+            if (ModelState.IsValid && user.Password != null && user.EmailAddress != null)
             {
-                var result = await signInManager.PasswordSignInAsync(user.EmailAddress, user.Password,false,false);
+                var result = await signInManager.PasswordSignInAsync(user.EmailAddress, user.Password, false, false);
                 if (result.Succeeded)
                     return RedirectToAction("Index", "Home");
                 return View(user);
@@ -124,21 +123,21 @@ namespace Main.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register ()
+        public IActionResult Register()
         {
             return View();
         }
-        
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> register(RegisterViewModel user)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 IdentityUser I_user = new IdentityUser
                 {
                     UserName = user.EmailAddress,
-                    Email =user.EmailAddress,
+                    Email = user.EmailAddress,
                     PasswordHash = user.Password,
                 };
                 var result = await userManager.CreateAsync(I_user);

@@ -19,8 +19,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Galaxy.Core\Galaxy.Core.csproj" />
-    <ProjectReference Include="..\Galaxy.Data\Galaxy.Data.csproj" />
-    <ProjectReference Include="..\Galaxy.Utility\Galaxy.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Teacher\Controllers\" />
+    <Folder Include="Areas\Teacher\Data\" />
+    <Folder Include="Areas\Teacher\Models\" />
+    <Folder Include="Areas\Teacher\Views\" />
   </ItemGroup>
 
 </Project>

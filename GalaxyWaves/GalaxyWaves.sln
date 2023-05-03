@@ -10,11 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		What I Learnt .txt = What I Learnt .txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "..\Main\Main.csproj", "{F188A18C-107C-434D-A5C9-FA5C261EF643}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Utility", "..\Galaxy.Utility\Galaxy.Utility.csproj", "{82C8CFCE-1A80-4B41-869E-4BAB58DD8E43}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Data", "..\Galaxy.Data\Galaxy.Data.csproj", "{90D812FB-811F-410A-B0DC-69C0009446AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Main", "..\Main\Main.csproj", "{F188A18C-107C-434D-A5C9-FA5C261EF643}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +26,6 @@ Global
 		{F188A18C-107C-434D-A5C9-FA5C261EF643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F188A18C-107C-434D-A5C9-FA5C261EF643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F188A18C-107C-434D-A5C9-FA5C261EF643}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82C8CFCE-1A80-4B41-869E-4BAB58DD8E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82C8CFCE-1A80-4B41-869E-4BAB58DD8E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82C8CFCE-1A80-4B41-869E-4BAB58DD8E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82C8CFCE-1A80-4B41-869E-4BAB58DD8E43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90D812FB-811F-410A-B0DC-69C0009446AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90D812FB-811F-410A-B0DC-69C0009446AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90D812FB-811F-410A-B0DC-69C0009446AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90D812FB-811F-410A-B0DC-69C0009446AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
