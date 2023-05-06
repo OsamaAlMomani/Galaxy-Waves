@@ -1,6 +1,4 @@
-﻿using Galaxy.Core.Models.AdminSite;
-using Galaxy.Core.Models.Guide;
-using Galaxy.Core.ViewModelComponent;
+﻿using Main.Areas.Admin.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +8,10 @@ namespace Main.DataAccess
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options){ }
 
-        public DbSet<TeacherProfile> Teacher_Profile { get; set; }
-        public DbSet<Department> Department { get; set; }
-        public DbSet<Equipment> equipment { get; set; }
-        public DbSet<Course> Course { get; set; }
+        public DbSet<Category> categories { get; set; }
+
+        public DbSet<Teacher> Teacher { get; set; }
+
 
     }
 }

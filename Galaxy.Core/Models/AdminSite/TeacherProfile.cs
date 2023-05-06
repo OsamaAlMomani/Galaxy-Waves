@@ -5,11 +5,7 @@ namespace Galaxy.Core.Models.AdminSite
 {
     public class TeacherProfile
     {
-        [Key]
-        public Guid TeacherID { get; set; }
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "First Name ")]
-        public string? TeacherFirstName { get; set; }
+       
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Last Name ")]
@@ -36,35 +32,7 @@ namespace Galaxy.Core.Models.AdminSite
         [Display(Name = "Gender")]
         public string? Sex { get; set; }
 
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Address")]
-        public string? Address { get; set; }
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "City")]
-        public string? City { get; set; }
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Country")]
-        public string? Country { get; set; }
-
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Date Of Hiring")]
-        public DateTime JDate { get; set; }
-
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Working(Active) / On Vacation(Idle) / Retired(UnActive)")]
-        public List<string> Status = new List<string>()
-        {
-            "Active",
-            "Idel",
-            "UnActive"
-        };
-
-        [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Salary")]
-        public decimal Salary { get; set; }
-
-
-        [Required(ErrorMessage = "Empty Field")]
+              [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Bank IBan")]
         public Int64 IBan { get; set; }
 

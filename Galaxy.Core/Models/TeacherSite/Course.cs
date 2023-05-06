@@ -15,6 +15,8 @@ namespace Galaxy.Core.Models.Guide
         [Required(ErrorMessage = "Empty Field")]
         public string? CourseName { get; set; }
         [Required(ErrorMessage = "Empty Field")]
+        public string? CourseVideo { get; set; }
+        [Required(ErrorMessage = "Empty Field")]
         public string? CourseDescription { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         public decimal? CoursePrice { get; set; }
@@ -29,7 +31,7 @@ namespace Galaxy.Core.Models.Guide
         [Required]
         [ForeignKey("Email")]
         [Display(Name = "Teacher Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         public Guide? Guide { get; set; }
         [Required(ErrorMessage = "Empty Field")]
         public string? Duration { get; set; }
