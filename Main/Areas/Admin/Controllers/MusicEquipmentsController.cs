@@ -66,6 +66,7 @@ namespace Main.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 string imgPath = uploadImg(musicEquipment);
                 musicEquipment.Id = Guid.NewGuid();
 
@@ -75,7 +76,8 @@ namespace Main.Areas.Admin.Controllers
                     Name = musicEquipment.Name,
                     About_It = musicEquipment.About_It,
                     Img= imgPath,
-                    categoryName=musicEquipment.categoryName,                  
+                    categoryName=musicEquipment.categoryName,
+                    Price=musicEquipment.Price
                 };
 
                 _context.musicEquipment.Add(music);
@@ -99,16 +101,25 @@ namespace Main.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
+            MusicEquipmentViewModel music = new MusicEquipmentViewModel
+            { 
+                Name = musicEquipment.Name,
+                Id  = musicEquipment.Id,
+                categoryName=musicEquipment.categoryName,
+                //Img=musicEquipment.Img,
+                About_It=musicEquipment.About_It,
+                Price= musicEquipment.Price
+            };
+
             ViewData["categoryName"] = new SelectList(_context.categories, "CategoryId", "categoryName", musicEquipment.categoryName);
-            return View(musicEquipment);
+            return View(music);
         }
 
-        // POST: Admin/MusicEquipments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,categoryName,Img,About_It")] MusicEquipment musicEquipment)
+        public async Task<IActionResult> Edit(Guid id, MusicEquipmentViewModel musicEquipment)
         {
             if (id != musicEquipment.Id)
             {
@@ -117,9 +128,19 @@ namespace Main.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                string imgFile = uploadImg(musicEquipment);
+                MusicEquipment music = new MusicEquipment
+                {
+                    Name=musicEquipment.Name,
+                    Id=musicEquipment.Id,
+                    categoryName=musicEquipment.categoryName,
+                    Img = imgFile,
+                    About_It = musicEquipment.About_It,
+                    Price=musicEquipment.Price
+                };
                 try
                 {
-                    _context.Update(musicEquipment);
+                    _context.Update(music);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -193,7 +214,7 @@ namespace Main.Areas.Admin.Controllers
                 Directory.CreateDirectory(p);
             }
             string fileName = Path.GetFileNameWithoutExtension(model.Img!.FileName);
-            string newImgName = "nextwo_" + fileName + "_" +
+            string newImgName = "GalaxyWaves_" + fileName + "_" +
                 Guid.NewGuid().ToString() + Path.GetExtension(model.Img.FileName);
             using (FileStream fileStream = new FileStream(Path.Combine(p, newImgName), FileMode.Create))
             {

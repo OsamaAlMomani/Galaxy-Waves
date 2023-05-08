@@ -18,5 +18,7 @@ namespace Main.Areas.Admin.Models.ViewModel
         [Required]
         [Display(Name = "About It")]
         public string? About_It { get; set; }
+        [Required]
+        public decimal? Price { get; set; }
     }
 }
