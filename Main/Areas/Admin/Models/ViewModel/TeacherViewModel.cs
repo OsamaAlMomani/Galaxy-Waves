@@ -33,10 +33,6 @@ namespace Main.Areas.Admin.Models.ViewModel
         public string? Sex { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
-        [Display(Name = "Bank IBan")]
-        public Int64 IBan { get; set; }
-
-        [Required(ErrorMessage = "Empty Field")]
         [DataType(DataType.MultilineText)]
         public string? About { get; set; }
     }

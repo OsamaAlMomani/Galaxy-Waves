@@ -57,7 +57,7 @@ namespace Main.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FullName,Email,Phone,Img,DOB,Sex,IBan,About")] Teacher teacher)
+        public async Task<IActionResult> Create(Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Main.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,FullName,Email,Phone,Img,DOB,Sex,IBan,About")] Teacher teacher)
+        public async Task<IActionResult> Edit(Guid id,Teacher teacher)
         {
             if (id != teacher.Id)
             {

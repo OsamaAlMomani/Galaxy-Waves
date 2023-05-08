@@ -1,6 +1,7 @@
 ﻿using Main.Areas.Admin.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Main.Areas.Admin.Models.RoleViewModel;
 
 namespace Main.DataAccess
 {
@@ -11,7 +12,7 @@ namespace Main.DataAccess
         public DbSet<Category> categories { get; set; }
 
         public DbSet<Teacher> Teacher { get; set; }
-
+        public DbSet<MusicEquipment> musicEquipment { get; set; }
 
     }
 }

@@ -29,7 +29,7 @@ namespace Main.Areas.Admin.Controllers
         }
 
         // GET: Admin/Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.categories == null)
             {
@@ -37,7 +37,7 @@ namespace Main.Areas.Admin.Controllers
             }
 
             var category = await _context.categories
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
             if (category == null)
             {
                 return NotFound();
@@ -57,10 +57,11 @@ namespace Main.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Create([Bind("CategoryId,categoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
+                category.CategoryId = Guid.NewGuid();
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,7 +70,7 @@ namespace Main.Areas.Admin.Controllers
         }
 
         // GET: Admin/Categories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.categories == null)
             {
@@ -89,9 +90,9 @@ namespace Main.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
+        public async Task<IActionResult> Edit(Guid id, [Bind("CategoryId,categoryName")] Category category)
         {
-            if (id != category.Id)
+            if (id != category.CategoryId)
             {
                 return NotFound();
             }
@@ -105,7 +106,7 @@ namespace Main.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!CategoryExists(category.CategoryId))
                     {
                         return NotFound();
                     }
@@ -120,7 +121,7 @@ namespace Main.Areas.Admin.Controllers
         }
 
         // GET: Admin/Categories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.categories == null)
             {
@@ -128,7 +129,7 @@ namespace Main.Areas.Admin.Controllers
             }
 
             var category = await _context.categories
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
             if (category == null)
             {
                 return NotFound();
@@ -140,7 +141,7 @@ namespace Main.Areas.Admin.Controllers
         // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.categories == null)
             {
@@ -156,9 +157,9 @@ namespace Main.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
+        private bool CategoryExists(Guid id)
         {
-          return (_context.categories?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.categories?.Any(e => e.CategoryId == id)).GetValueOrDefault();
         }
     }
 }
