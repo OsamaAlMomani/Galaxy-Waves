@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Main.Areas.Admin.Models.RoleViewModel;
+using Main.Areas.Departments.Models;
+using Main.Areas.Tutor.Models;
 
 namespace Main.DataAccess
 {
@@ -13,6 +15,10 @@ namespace Main.DataAccess
 
         public DbSet<Teacher> Teacher { get; set; }
         public DbSet<MusicEquipment> musicEquipment { get; set; }
+        public DbSet<Specialization> specialization { get; set; }
+        public DbSet<Core>cores { get; set; }
+        public DbSet<Course> course { get; set; }
+
 
     }
 }
