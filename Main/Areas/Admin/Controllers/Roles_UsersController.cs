@@ -1,7 +1,9 @@
 ﻿using Azure.Core;
 using Main.Areas.Admin.Models.RoleViewModel;
+using Main.DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 
@@ -12,10 +14,12 @@ namespace Main.Areas.Admin.Controllers
     {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<IdentityUser> userManager;
-        public Roles_UsersController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser>userManager)
+        private readonly AppDbContext db;
+        public Roles_UsersController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser>userManager,AppDbContext _db)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            db = _db;
         }
         #region Roles Manager
                 // ----------*Get Methods*------------
@@ -94,6 +98,7 @@ namespace Main.Areas.Admin.Controllers
                     return View("Error");
                 }
 
+
                 role.Name = model.RoleName;
                 var result = await roleManager.UpdateAsync(role);
                 if (result.Succeeded)
@@ -126,6 +131,26 @@ namespace Main.Areas.Admin.Controllers
             }
             return View(model);
         }
+        #endregion
+
+        #region User Maneger
+        [HttpGet]
+        public IActionResult UserRole()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GiveUser_Role()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> GiveUser_Role(user)
+        //{
+        //    return View();
+        //}
         #endregion
     }
 }

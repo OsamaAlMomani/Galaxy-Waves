@@ -24,7 +24,7 @@ namespace Main.Areas.Departments.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.cores != null ? 
-                          View(await _context.cores.ToListAsync()) :
+                          View(await _context.cores.Include(x=>x.spec).ToListAsync()) :
                           Problem("Entity set 'AppDbContext.cores'  is null.");
         }
 
@@ -52,9 +52,7 @@ namespace Main.Areas.Departments.Controllers
             return View();
         }
 
-        // POST: Departments/Cores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CoreId,CoreName,SpecId")] Core core)
@@ -81,6 +79,8 @@ namespace Main.Areas.Departments.Controllers
             {
                 return NotFound();
             }
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "specName");
+
             return View(core);
         }
 
@@ -116,6 +116,8 @@ namespace Main.Areas.Departments.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "specName");
+
             return View(core);
         }
 

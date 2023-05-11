@@ -11,8 +11,8 @@ namespace Main.Areas.Departments.Models
         [Required]
         public string? CoreName { get; set; }
         [Required]
-        [ForeignKey("Specialization")]
+        [ForeignKey("SpecId")]
         public int SpecId { get; set; }
-        public Specialization? specialization { get; set; }
+        public Specialization? spec { get; set; }
     }
 }

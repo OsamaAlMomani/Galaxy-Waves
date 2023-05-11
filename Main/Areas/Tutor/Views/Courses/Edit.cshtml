@@ -1,0 +1,61 @@
+﻿@model Main.Areas.Tutor.Models.Course
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Course</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CourseId" />
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseDescription" class="control-label"></label>
+                <input asp-for="CourseDescription" class="form-control" />
+                <span asp-validation-for="CourseDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseVideo" class="control-label"></label>
+                <input asp-for="CourseVideo" class="form-control" />
+                <span asp-validation-for="CourseVideo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherID" class="control-label"></label>
+                <select asp-for="TeacherID" class="form-control" asp-items="ViewBag.TeacherID"></select>
+                <span asp-validation-for="TeacherID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoreId" class="control-label"></label>
+                <select asp-for="CoreId" class="form-control" asp-items="ViewBag.CoreId"></select>
+                <span asp-validation-for="CoreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+
+            <div>
+                <video style="width: 547px; height: 308px; left: 0px; top: 0px;" tabindex="-1" class="video-stream html5-main-video" controlslist="nodownload" src="@Model.CourseVideo"></video>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
