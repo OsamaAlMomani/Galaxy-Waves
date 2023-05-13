@@ -1,35 +1,176 @@
-﻿@model IEnumerable<Main.Areas.Admin.Models.Category>
+﻿@model IEnumerable<Category>
 
 @{
     ViewData["Title"] = "Index";
 }
+<div class="columns-2 col-lg-12">
+    <!-- Start: Top Bar -->
+    <!-- Start: Top Bar -->
+    <div class="shop_products_top_filter">
+        <div class="project-top-wrapper d-flex flex-wrap align-items-center">
+            <div class="project-top-left d-flex flex-wrap align-items-center">
+                <div class="project-search shop-search  global-shadow ">
+                    <form action="/" class="d-flex align-items-center user-member__form">
+                        <img src="~/img/svg/search.svg" alt="search" class="svg">
+                        <input class="form-control me-sm-2 border-0 box-shadow-none" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <span class="project-result-showing fs-14 color-gray ms-xl-25 me-xl-0 text-center mt-lg-0 mt-20">
+                    Showing
+                    <span>1–8</span> of <span>86</span>
+                    results
+                </span>
+            </div>
+            <div class="project-top-right d-flex flex-wrap align-items-center">
+                <div class="project-category flex-wrap d-flex align-items-center">
+                    <p class="fs-14 color-gray text-capitalize">sort by:</p>
+                    <div class="project-tap project-tab__product">
+                        <ul class="nav px-1 " id="ap-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="ap-overview-tab" data-bs-toggle="pill" href="#ap-overview" role="tab" aria-controls="ap-overview" aria-selected="true">top rated</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="timeline-tab" data-bs-toggle="pill" href="#timeline" role="tab" aria-controls="timeline" aria-selected="false">popular</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="activity-tab" data-bs-toggle="pill" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Newest</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="draft-tab" data-bs-toggle="pill" href="#draft" role="tab" aria-controls="draft" aria-selected="false">price</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-icon-selected content-center mt-lg-0 mt-25">
+                    <div class="listing-social-link listing-social-link__products pb-lg-0 pb-xs-2">
+                        <div class="icon-list-social d-flex">
+                            <a class="icon-list-social__link rounded-circle icon-list-social__style justify-content-center active ms-xl-20" href="~/#">
+                                <img class="svg" src="~/img/svg/grid.svg" alt="grid">
+                            </a>
+                            <a class="icon-list-social__link rounded-circle icon-list-social__style justify-content-center  " href="~/product-list.html">
+                                <img class="svg" src="~/img/svg/list.svg" alt="list">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Top Bar -->
+    <!-- End: Top Bar -->
+    <!-- Start: Shop Item -->
+    <div class="tab-content mt-25" id="ap-tabContent">
+        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel" aria-labelledby="ap-overview-tab">
+            <!-- Start: Shop Item -->
+            <div class="row product-page-list justify-content-center">
+                <div class="cus-xl-3 col-lg-6 col-md-11 col-12 mb-30 px-10">
 
-<h1>Index</h1>
+                    <div class="card product product--grid">
+                        <div class="h-100">
+                            <div class="product-item">
+                                <div class="product-item__image">
+                                    <span class="like-icon">
+                                        <button type="button" class="content-center">
+                                            <i class="lar la-heart icon"></i>
+                                        </button>
+                                    </span>
+                                    <a href="#"><img class="card-img-top img-fluid" src="~/img/digital-chair.png" alt="digital-chair"></a>
+                                </div>
+                                <div class="card-body px-20 pb-25 pt-25">
+                                    <div class="product-item__body text-capitalize">
+                                        <a href="~/product-details.html">
+                                            <h6 class="card-title">Montes scelerisque</h6>
+                                        </a>
+                                        <div class="stars-rating d-flex align-items-center flex-wrap mb-10">
+                                            <span class="star-icon las la-star active"></span>
+                                            <span class="star-icon las la-star active"></span>
+                                            <span class="star-icon las la-star active"></span>
+                                            <span class="star-icon las la-star active"></span>
+                                            <span class="star-icon las la-star-half-alt active"></span>
+                                            <span class="stars-rating__point">4.9</span>
+                                            <span class="stars-rating__review">
+                                                <span>778</span> Reviews
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-item__footer">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.categoryName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.categoryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <span class="product-desc-price">$200.00</span>
+                                            <span class="product-price">$100.00</span>
+                                            <span class="product-discount">50% Off</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-item__button d-flex mt-20 flex-wrap">
+
+
+
+                                        <button class="btn btn-default btn-squared color-light btn-outline-light px-20 ">
+                                            <img src="~/img/svg/shopping-bag.svg" alt="shopping-bag" class="svg">
+                                            Add To Cart
+                                        </button>
+
+
+
+
+
+
+                                        <button class="btn btn-primary btn-default btn-squared border-0 px-25">
+                                            buy now
+                                        </button>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End: Shop Item -->
+        </div>
+
+
+    </div>
+    <!-- End: Shop Item -->
+    <div class="row">
+        <div class="col-12">
+            <div class="user-pagination">
+                <div class="d-flex justify-content-lg-end justify-content-center mt-1 mb-30">
+
+                    <nav class="dm-page ">
+                        <ul class="dm-pagination d-flex">
+                            <li class="dm-pagination__item">
+                                <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-left"></span></a>
+                                <a href="#" class="dm-pagination__link"><span class="page-number">1</span></a>
+                                <a href="#" class="dm-pagination__link active"><span class="page-number">2</span></a>
+                                <a href="#" class="dm-pagination__link"><span class="page-number">3</span></a>
+                                <a href="#" class="dm-pagination__link pagination-control"><span class="page-number">...</span></a>
+                                <a href="#" class="dm-pagination__link"><span class="page-number">12</span></a>
+                                <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-right"></span></a>
+                                <a href="#" class="dm-pagination__option">
+                                </a>
+                            </li>
+                            <li class="dm-pagination__item">
+                                <div class="paging-option">
+                                    <select name="page-number" class="page-selection">
+                                        <option value="20">20/page</option>
+                                        <option value="40">40/page</option>
+                                        <option value="60">60/page</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+
+
+                </div>
+                <!-- End of Pagination-->
+            </div>
+        </div>
+    </div>
+</div>

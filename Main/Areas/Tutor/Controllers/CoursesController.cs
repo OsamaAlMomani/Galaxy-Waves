@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Main.Areas.Tutor.Models;
 using Main.DataAccess;
-using Main.Areas.Tutor.Models.ViewModel;
-using Microsoft.Identity.Client;
+using Main.Models.TeacherModels;
+using Main.Models.TeacherModels.ViewModel;
 
 namespace Main.Areas.Tutor.Controllers
 {
@@ -68,7 +63,8 @@ namespace Main.Areas.Tutor.Controllers
         {
             if (ModelState.IsValid)
             {
-                string videoMap = UploadVideo(Model);// not implemented
+                string videoMap = UploadVideo(Model);
+                string ImgMap = UploadImg(Model);
                 Model.CourseId = Guid.NewGuid();
                 Model.TeacherID = Guid.NewGuid();
                 var course = new Course
@@ -80,7 +76,7 @@ namespace Main.Areas.Tutor.Controllers
                      CourseVideo = videoMap,
                      Price = Model.Price,
                      TeacherID = Model.TeacherID,
-                     teacher = Model.teacher
+                       CourseImg= ImgMap,
                 };
                 _context.Add(course);
                 await _context.SaveChangesAsync();
@@ -114,7 +110,7 @@ namespace Main.Areas.Tutor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("CourseId,CourseName,CourseDescription,CourseVideo,TeacherID,CoreId,Price")] Course course)
+        public async Task<IActionResult> Edit(Guid id,CourseViewModel course)
         {
             if (id != course.CourseId)
             {
@@ -211,6 +207,28 @@ namespace Main.Areas.Tutor.Controllers
                 course.CourseVideo.CopyTo(fileStream);
             }
             return "\\Galaxy_Video\\" + newVideoName;
+        }        
+        public string UploadImg(CourseViewModel course)
+        {
+            if (!CourseExists(course.CourseId)) { }
+            if (course == null){ Console.WriteLine("Error : Img object is null"); }
+            string wwwPath = _webHostEnvironment.WebRootPath;
+            if (string.IsNullOrEmpty(wwwPath)) { Console.WriteLine("Null WWW Path"); }
+            string ContentPath = _webHostEnvironment.ContentRootPath;
+            if (string.IsNullOrEmpty(ContentPath)) { Console.WriteLine("Null Content Path"); }
+            string p = Path.Combine(wwwPath, "Galaxy_img");
+            if (!Directory.Exists(p))
+            {
+                Directory.CreateDirectory(p);
+            }
+            string fileName = Path.GetFileNameWithoutExtension(course.CourseVideo!.FileName);
+            string newVideoName = "GalaxyWaves_" + fileName + "_" +
+                Guid.NewGuid().ToString() + Path.GetExtension(course.CourseVideo.FileName);
+            using (FileStream fileStream = new FileStream(Path.Combine(p, newVideoName), FileMode.Create))
+            {
+                course.CourseVideo.CopyTo(fileStream);
+            }
+            return "\\Galaxy_img\\" + newVideoName;
         }
     }
 }

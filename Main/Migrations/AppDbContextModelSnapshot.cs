@@ -22,7 +22,7 @@ namespace Main.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Main.Areas.Admin.Models.Category", b =>
+            modelBuilder.Entity("Main.Models.AdminModels.Category", b =>
                 {
                     b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace Main.Migrations
                     b.ToTable("categories");
                 });
 
-            modelBuilder.Entity("Main.Areas.Admin.Models.MusicEquipment", b =>
+            modelBuilder.Entity("Main.Models.AdminModels.MusicEquipment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace Main.Migrations
                     b.ToTable("musicEquipment");
                 });
 
-            modelBuilder.Entity("Main.Areas.Admin.Models.Teacher", b =>
+            modelBuilder.Entity("Main.Models.AdminModels.Teacher", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,7 +112,7 @@ namespace Main.Migrations
                     b.ToTable("Teacher");
                 });
 
-            modelBuilder.Entity("Main.Areas.Departments.Models.Core", b =>
+            modelBuilder.Entity("Main.Models.DepartmentModels.Core", b =>
                 {
                     b.Property<int>("CoreId")
                         .ValueGeneratedOnAdd()
@@ -127,17 +127,14 @@ namespace Main.Migrations
                     b.Property<int>("SpecId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("specializationSpecId")
-                        .HasColumnType("int");
-
                     b.HasKey("CoreId");
 
-                    b.HasIndex("specializationSpecId");
+                    b.HasIndex("SpecId");
 
                     b.ToTable("cores");
                 });
 
-            modelBuilder.Entity("Main.Areas.Departments.Models.Specialization", b =>
+            modelBuilder.Entity("Main.Models.DepartmentModels.Specialization", b =>
                 {
                     b.Property<int>("SpecId")
                         .ValueGeneratedOnAdd()
@@ -159,7 +156,7 @@ namespace Main.Migrations
                     b.ToTable("specialization");
                 });
 
-            modelBuilder.Entity("Main.Areas.Tutor.Models.Course", b =>
+            modelBuilder.Entity("Main.Models.TeacherModels.Course", b =>
                 {
                     b.Property<Guid>("CourseId")
                         .ValueGeneratedOnAdd()
@@ -393,9 +390,9 @@ namespace Main.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Main.Areas.Admin.Models.MusicEquipment", b =>
+            modelBuilder.Entity("Main.Models.AdminModels.MusicEquipment", b =>
                 {
-                    b.HasOne("Main.Areas.Admin.Models.Category", "Category")
+                    b.HasOne("Main.Models.AdminModels.Category", "Category")
                         .WithMany()
                         .HasForeignKey("categoryName")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -404,18 +401,20 @@ namespace Main.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Main.Areas.Departments.Models.Core", b =>
+            modelBuilder.Entity("Main.Models.DepartmentModels.Core", b =>
                 {
-                    b.HasOne("Main.Areas.Departments.Models.Specialization", "specialization")
+                    b.HasOne("Main.Models.DepartmentModels.Specialization", "spec")
                         .WithMany()
-                        .HasForeignKey("specializationSpecId");
+                        .HasForeignKey("SpecId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("specialization");
+                    b.Navigation("spec");
                 });
 
-            modelBuilder.Entity("Main.Areas.Departments.Models.Specialization", b =>
+            modelBuilder.Entity("Main.Models.DepartmentModels.Specialization", b =>
                 {
-                    b.HasOne("Main.Areas.Admin.Models.Category", "Category")
+                    b.HasOne("Main.Models.AdminModels.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -424,15 +423,15 @@ namespace Main.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Main.Areas.Tutor.Models.Course", b =>
+            modelBuilder.Entity("Main.Models.TeacherModels.Course", b =>
                 {
-                    b.HasOne("Main.Areas.Departments.Models.Core", "Core")
+                    b.HasOne("Main.Models.DepartmentModels.Core", "Core")
                         .WithMany()
                         .HasForeignKey("CoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Main.Areas.Admin.Models.Teacher", "teacher")
+                    b.HasOne("Main.Models.AdminModels.Teacher", "teacher")
                         .WithMany()
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade)

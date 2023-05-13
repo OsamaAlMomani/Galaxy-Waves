@@ -1,4 +1,4 @@
-﻿using Main.Areas.WebAccess.Models.WebAccessModel;
+﻿using Main.Models.WebAccessModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

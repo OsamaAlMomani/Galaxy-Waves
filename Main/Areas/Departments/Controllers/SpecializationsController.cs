@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Main.Areas.Departments.Models;
 using Main.DataAccess;
+using Main.Models.DepartmentModels;
 
 namespace Main.Areas.Departments.Controllers
 {

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Main.Areas.Admin.Models;
 using Main.DataAccess;
-using Main.Areas.Admin.Models.ViewModel;
 using Microsoft.AspNetCore.Hosting;
+using Main.Models.AdminModels.ViewModel;
+using Main.Models.AdminModels;
 
 namespace Main.Areas.Admin.Controllers
 {

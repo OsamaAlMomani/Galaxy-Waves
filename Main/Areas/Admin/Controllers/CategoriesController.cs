@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Main.Areas.Admin.Models;
 using Main.DataAccess;
+using Main.Models.AdminModels;
 
 namespace Main.Areas.Admin.Controllers
 {

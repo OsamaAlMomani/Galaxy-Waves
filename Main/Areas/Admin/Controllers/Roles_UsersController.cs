@@ -1,6 +1,6 @@
 ﻿using Azure.Core;
-using Main.Areas.Admin.Models.RoleViewModel;
 using Main.DataAccess;
+using Main.Models.AdminModels.RoleViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

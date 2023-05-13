@@ -1,9 +1,8 @@
-﻿using Main.Areas.Admin.Models;
+﻿using Main.Models.AdminModels;
+using Main.Models.DepartmentModels;
+using Main.Models.TeacherModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Main.Areas.Admin.Models.RoleViewModel;
-using Main.Areas.Departments.Models;
-using Main.Areas.Tutor.Models;
 
 namespace Main.DataAccess
 {
