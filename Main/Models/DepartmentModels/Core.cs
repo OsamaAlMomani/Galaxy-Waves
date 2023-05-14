@@ -6,12 +6,12 @@ namespace Main.Models.DepartmentModels
     public class Core
     {
         [Key]
-        public int CoreId { get; set; }
+        public Guid CoreId { get; set; }
         [Required]
         public string? CoreName { get; set; }
         [Required]
         [ForeignKey("spec")]
-        public int SpecId { get; set; }
+        public Guid SpecId { get; set; }
         public Specialization? spec { get; set; }
     }
 }

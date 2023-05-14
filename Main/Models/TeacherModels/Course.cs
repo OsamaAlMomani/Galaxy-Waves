@@ -24,12 +24,8 @@ namespace Main.Models.TeacherModels
         [Required]
         public string? CourseVideo { get; set; }
         [Required]
-        [ForeignKey("Teacher")]
-        public Guid TeacherID { get; set; }
-        public Teacher? teacher { get; set; }
-        [Required]
         [ForeignKey("Core")]
-        public int CoreId { get; set; }
+        public Guid CoreId { get; set; }
         public Core? Core { get; set; }
         [Required]
         public decimal Price { get; set; }

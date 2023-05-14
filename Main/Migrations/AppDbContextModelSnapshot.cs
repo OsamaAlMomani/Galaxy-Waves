@@ -114,18 +114,16 @@ namespace Main.Migrations
 
             modelBuilder.Entity("Main.Models.DepartmentModels.Core", b =>
                 {
-                    b.Property<int>("CoreId")
+                    b.Property<Guid>("CoreId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoreId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CoreName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpecId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SpecId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CoreId");
 
@@ -136,11 +134,9 @@ namespace Main.Migrations
 
             modelBuilder.Entity("Main.Models.DepartmentModels.Specialization", b =>
                 {
-                    b.Property<int>("SpecId")
+                    b.Property<Guid>("SpecId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -162,10 +158,14 @@ namespace Main.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CoreId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CoreId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CourseDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseImg")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -180,14 +180,9 @@ namespace Main.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("TeacherID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("CourseId");
 
                     b.HasIndex("CoreId");
-
-                    b.HasIndex("TeacherID");
 
                     b.ToTable("course");
                 });
@@ -431,15 +426,7 @@ namespace Main.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Main.Models.AdminModels.Teacher", "teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Core");
-
-                    b.Navigation("teacher");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

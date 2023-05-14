@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Main.DataAccess;
+﻿using Main.DataAccess;
 using Main.Models.TeacherModels;
 using Main.Models.TeacherModels.ViewModel;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Main.Areas.Tutor.Controllers
 {
@@ -13,7 +13,7 @@ namespace Main.Areas.Tutor.Controllers
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CoursesController(AppDbContext context , IWebHostEnvironment webHostEnvironment)
+        public CoursesController(AppDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
@@ -22,7 +22,7 @@ namespace Main.Areas.Tutor.Controllers
         // GET: Tutor/Courses
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.course.Include(c => c.Core).Include(c => c.teacher);
+            var appDbContext = _context.course.Include(c => c.Core);
             return View(await appDbContext.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace Main.Areas.Tutor.Controllers
 
             var course = await _context.course
                 .Include(c => c.Core)
-                .Include(c => c.teacher)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
             if (course == null)
             {
@@ -50,7 +49,6 @@ namespace Main.Areas.Tutor.Controllers
         public IActionResult Create()
         {
             ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName");
-            ViewData["TeacherID"] = new SelectList(_context.Teacher, "Id", "About");
             return View();
         }
 
@@ -59,32 +57,28 @@ namespace Main.Areas.Tutor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CourseViewModel Model)
+        public async Task<IActionResult> Create(CourseViewModel course)
         {
             if (ModelState.IsValid)
             {
-                string videoMap = UploadVideo(Model);
-                string ImgMap = UploadImg(Model);
-                Model.CourseId = Guid.NewGuid();
-                Model.TeacherID = Guid.NewGuid();
-                var course = new Course
+                course.CourseId = Guid.NewGuid();
+                string img = uploadImg(course);
+                string video = uploadVideo(course);
+                var music = new Course
                 {
-                     CoreId = Model.CoreId,
-                     CourseId = Model.CourseId,
-                     CourseName = Model.CourseName,
-                     CourseDescription = Model.CourseDescription,
-                     CourseVideo = videoMap,
-                     Price = Model.Price,
-                     TeacherID = Model.TeacherID,
-                       CourseImg= ImgMap,
+                    CourseId = course.CourseId,
+                    CourseName = course.CourseName,
+                    CourseDescription = course.CourseDescription,
+                    CourseImg = img,
+                    CourseVideo = video,
+                    CoreId = course.CoreId,
                 };
                 _context.Add(course);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName", Model.CoreId);
-            ViewData["TeacherID"] = new SelectList(_context.Teacher, "Id", "About", Model.TeacherID);
-            return View(Model);
+            ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName", course.CoreId);
+            return View(course);
         }
 
         // GET: Tutor/Courses/Edit/5
@@ -101,7 +95,6 @@ namespace Main.Areas.Tutor.Controllers
                 return NotFound();
             }
             ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName", course.CoreId);
-            ViewData["TeacherID"] = new SelectList(_context.Teacher, "Id", "About", course.TeacherID);
             return View(course);
         }
 
@@ -110,7 +103,7 @@ namespace Main.Areas.Tutor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id,CourseViewModel course)
+        public async Task<IActionResult> Edit(Guid id, CourseViewModel course)
         {
             if (id != course.CourseId)
             {
@@ -138,7 +131,6 @@ namespace Main.Areas.Tutor.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName", course.CoreId);
-            ViewData["TeacherID"] = new SelectList(_context.Teacher, "Id", "About", course.TeacherID);
             return View(course);
         }
 
@@ -152,7 +144,6 @@ namespace Main.Areas.Tutor.Controllers
 
             var course = await _context.course
                 .Include(c => c.Core)
-                .Include(c => c.teacher)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
             if (course == null)
             {
@@ -185,50 +176,47 @@ namespace Main.Areas.Tutor.Controllers
         {
           return (_context.course?.Any(e => e.CourseId == id)).GetValueOrDefault();
         }
-        
-        public string UploadVideo(CourseViewModel course)
+
+        public string uploadImg(CourseViewModel model)
         {
-            if (!CourseExists(course.CourseId)) { }
-            if (course == null){ Console.WriteLine("Error : Video object is null"); }
             string wwwPath = _webHostEnvironment.WebRootPath;
-            if (string.IsNullOrEmpty(wwwPath)) { Console.WriteLine("Null WWW Path"); }
-            string ContentPath = _webHostEnvironment.ContentRootPath;
-            if (string.IsNullOrEmpty(ContentPath)) { Console.WriteLine("Null Content Path"); }
-            string p = Path.Combine(wwwPath, "Galaxy_Video");
+            if (string.IsNullOrEmpty(wwwPath)) { }
+            string contentPath = _webHostEnvironment.ContentRootPath;
+            if (string.IsNullOrEmpty(contentPath)) { }
+            string p = Path.Combine(wwwPath, "Images");
             if (!Directory.Exists(p))
             {
                 Directory.CreateDirectory(p);
             }
-            string fileName = Path.GetFileNameWithoutExtension(course.CourseVideo!.FileName);
-            string newVideoName = "GalaxyWaves_" + fileName + "_" +
-                Guid.NewGuid().ToString() + Path.GetExtension(course.CourseVideo.FileName);
-            using (FileStream fileStream = new FileStream(Path.Combine(p, newVideoName), FileMode.Create))
+            string fileName = Path.GetFileNameWithoutExtension(model.CourseImg!.FileName);
+            string newImgName = "GalaxyWaves_" + fileName + "_" +
+                Guid.NewGuid().ToString() + Path.GetExtension(model.CourseImg.FileName);
+            using (FileStream fileStream = new FileStream(Path.Combine(p, newImgName), FileMode.Create))
             {
-                course.CourseVideo.CopyTo(fileStream);
+                model.CourseImg.CopyTo(fileStream);
             }
-            return "\\Galaxy_Video\\" + newVideoName;
-        }        
-        public string UploadImg(CourseViewModel course)
+            return "\\Images\\" + newImgName;
+        }
+
+        public string uploadVideo(CourseViewModel model)
         {
-            if (!CourseExists(course.CourseId)) { }
-            if (course == null){ Console.WriteLine("Error : Img object is null"); }
             string wwwPath = _webHostEnvironment.WebRootPath;
-            if (string.IsNullOrEmpty(wwwPath)) { Console.WriteLine("Null WWW Path"); }
-            string ContentPath = _webHostEnvironment.ContentRootPath;
-            if (string.IsNullOrEmpty(ContentPath)) { Console.WriteLine("Null Content Path"); }
-            string p = Path.Combine(wwwPath, "Galaxy_img");
+            if (string.IsNullOrEmpty(wwwPath)) { }
+            string contentPath = _webHostEnvironment.ContentRootPath;
+            if (string.IsNullOrEmpty(contentPath)) { }
+            string p = Path.Combine(wwwPath, "CourseVideo");
             if (!Directory.Exists(p))
             {
                 Directory.CreateDirectory(p);
             }
-            string fileName = Path.GetFileNameWithoutExtension(course.CourseVideo!.FileName);
-            string newVideoName = "GalaxyWaves_" + fileName + "_" +
-                Guid.NewGuid().ToString() + Path.GetExtension(course.CourseVideo.FileName);
-            using (FileStream fileStream = new FileStream(Path.Combine(p, newVideoName), FileMode.Create))
+            string fileName = Path.GetFileNameWithoutExtension(model.CourseVideo!.FileName);
+            string newImgName = "GalaxyWaves_" + fileName + "_" +
+                Guid.NewGuid().ToString() + Path.GetExtension(model.CourseVideo.FileName);
+            using (FileStream fileStream = new FileStream(Path.Combine(p, newImgName), FileMode.Create))
             {
-                course.CourseVideo.CopyTo(fileStream);
+                model.CourseVideo.CopyTo(fileStream);
             }
-            return "\\Galaxy_img\\" + newVideoName;
+            return "\\CourseVideo\\" + newImgName;
         }
     }
 }

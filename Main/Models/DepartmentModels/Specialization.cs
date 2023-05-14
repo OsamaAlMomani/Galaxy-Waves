@@ -7,7 +7,7 @@ namespace Main.Models.DepartmentModels
     public class Specialization
     {
         [Key]
-        public int SpecId { get; set; }
+        public Guid SpecId { get; set; }
         [Required]
         public string? SpecName { get; set; }
         [Required]

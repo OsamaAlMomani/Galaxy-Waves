@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Course>
+﻿@model IEnumerable<Main.Models.TeacherModels.Course>
 
 @{
     ViewData["Title"] = "Index";
 }
-<h1>Course Index</h1>
+
+@Component.InvokeAsync("Course")

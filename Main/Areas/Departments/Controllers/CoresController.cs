@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Main.DataAccess;
@@ -19,13 +23,12 @@ namespace Main.Areas.Departments.Controllers
         // GET: Departments/Cores
         public async Task<IActionResult> Index()
         {
-              return _context.cores != null ? 
-                          View(await _context.cores.Include(x=>x.spec).ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.cores'  is null.");
+            var appDbContext = _context.cores.Include(c => c.spec);
+            return View(await appDbContext.ToListAsync());
         }
 
         // GET: Departments/Cores/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.cores == null)
             {
@@ -33,6 +36,7 @@ namespace Main.Areas.Departments.Controllers
             }
 
             var core = await _context.cores
+                .Include(c => c.spec)
                 .FirstOrDefaultAsync(m => m.CoreId == id);
             if (core == null)
             {
@@ -45,25 +49,30 @@ namespace Main.Areas.Departments.Controllers
         // GET: Departments/Cores/Create
         public IActionResult Create()
         {
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "SpecName");
             return View();
         }
 
-        
+        // POST: Departments/Cores/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CoreId,CoreName,SpecId")] Core core)
         {
             if (ModelState.IsValid)
             {
+                core.CoreId = Guid.NewGuid();
                 _context.Add(core);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "SpecName", core.SpecId);
             return View(core);
         }
 
         // GET: Departments/Cores/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.cores == null)
             {
@@ -75,8 +84,7 @@ namespace Main.Areas.Departments.Controllers
             {
                 return NotFound();
             }
-            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "specName");
-
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "SpecName", core.SpecId);
             return View(core);
         }
 
@@ -85,7 +93,7 @@ namespace Main.Areas.Departments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CoreId,CoreName,SpecId")] Core core)
+        public async Task<IActionResult> Edit(Guid id, [Bind("CoreId,CoreName,SpecId")] Core core)
         {
             if (id != core.CoreId)
             {
@@ -112,13 +120,12 @@ namespace Main.Areas.Departments.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "specName");
-
+            ViewData["SpecId"] = new SelectList(_context.specialization, "SpecId", "SpecName", core.SpecId);
             return View(core);
         }
 
         // GET: Departments/Cores/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.cores == null)
             {
@@ -126,6 +133,7 @@ namespace Main.Areas.Departments.Controllers
             }
 
             var core = await _context.cores
+                .Include(c => c.spec)
                 .FirstOrDefaultAsync(m => m.CoreId == id);
             if (core == null)
             {
@@ -138,7 +146,7 @@ namespace Main.Areas.Departments.Controllers
         // POST: Departments/Cores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.cores == null)
             {
@@ -154,7 +162,7 @@ namespace Main.Areas.Departments.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CoreExists(int id)
+        private bool CoreExists(Guid id)
         {
           return (_context.cores?.Any(e => e.CoreId == id)).GetValueOrDefault();
         }

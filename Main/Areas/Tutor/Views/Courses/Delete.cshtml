@@ -1,4 +1,4 @@
-﻿@model Course
+﻿@model Main.Models.TeacherModels.Course
 
 @{
     ViewData["Title"] = "Delete";
@@ -24,16 +24,16 @@
             @Html.DisplayFor(model => model.CourseDescription)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseImg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CourseImg)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CourseVideo)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CourseVideo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.teacher)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.teacher.About)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Core)

@@ -14,7 +14,7 @@ namespace Main.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            var data = db.course.OrderByDescending(x => x.Img);
+            var data = db.course.OrderByDescending(x => x.CourseName);
             return View(data);
         }
     }

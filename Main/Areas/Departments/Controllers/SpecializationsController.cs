@@ -28,7 +28,7 @@ namespace Main.Areas.Departments.Controllers
         }
 
         // GET: Departments/Specializations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.specialization == null)
             {
@@ -62,6 +62,7 @@ namespace Main.Areas.Departments.Controllers
         {
             if (ModelState.IsValid)
             {
+                specialization.SpecId = Guid.NewGuid();
                 _context.Add(specialization);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -71,7 +72,7 @@ namespace Main.Areas.Departments.Controllers
         }
 
         // GET: Departments/Specializations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.specialization == null)
             {
@@ -92,7 +93,7 @@ namespace Main.Areas.Departments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SpecId,SpecName,CategoryId")] Specialization specialization)
+        public async Task<IActionResult> Edit(Guid id, [Bind("SpecId,SpecName,CategoryId")] Specialization specialization)
         {
             if (id != specialization.SpecId)
             {
@@ -124,7 +125,7 @@ namespace Main.Areas.Departments.Controllers
         }
 
         // GET: Departments/Specializations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.specialization == null)
             {
@@ -145,7 +146,7 @@ namespace Main.Areas.Departments.Controllers
         // POST: Departments/Specializations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.specialization == null)
             {
@@ -161,7 +162,7 @@ namespace Main.Areas.Departments.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SpecializationExists(int id)
+        private bool SpecializationExists(Guid id)
         {
           return (_context.specialization?.Any(e => e.SpecId == id)).GetValueOrDefault();
         }

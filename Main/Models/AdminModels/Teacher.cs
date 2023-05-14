@@ -1,14 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 
 namespace Main.Models.AdminModels
 {
     public class Teacher
     {
+        
         [Key]
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Full Name ")]
+        
         public string? FullName { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]
@@ -18,6 +22,7 @@ namespace Main.Models.AdminModels
 
         [Required(ErrorMessage = "Empty Field")]
         [Display(Name = "Phone Number")]
+            
         public string? Phone { get; set; }
 
         [Required(ErrorMessage = "Empty Field")]

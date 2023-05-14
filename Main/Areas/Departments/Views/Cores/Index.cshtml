@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Core>
+﻿@model IEnumerable<Main.Models.DepartmentModels.Core>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.CoreName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SpecId)
+                @Html.DisplayNameFor(model => model.spec)
             </th>
             <th></th>
         </tr>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.CoreName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SpecId)
+                @Html.DisplayFor(modelItem => item.spec.SpecName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CoreId">Edit</a> |
@@ -39,9 +39,3 @@
 }
     </tbody>
 </table>
- <div>
-    <video 
-        src="@Url.Content("~/Galaxy_Video/GalaxyWaves_Desktop 2023.04.10 - 20.26.43.01_18bb5fba-7904-4cba-8b90-fa2bf536d4ac.mp4")"
-        controls width="600px" height="600px">
-    </video>
- </div>
