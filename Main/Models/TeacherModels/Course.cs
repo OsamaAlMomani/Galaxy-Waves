@@ -28,7 +28,7 @@ namespace Main.Models.TeacherModels
         public Guid CoreId { get; set; }
         public Core? Core { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
     }
 }

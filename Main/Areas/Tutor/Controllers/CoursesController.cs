@@ -46,6 +46,7 @@ namespace Main.Areas.Tutor.Controllers
         }
 
         // GET: Tutor/Courses/Create
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName");
@@ -72,8 +73,9 @@ namespace Main.Areas.Tutor.Controllers
                     CourseImg = img,
                     CourseVideo = video,
                     CoreId = course.CoreId,
+                    Price = course.Price,
                 };
-                _context.Add(course);
+                _context.Add(music);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -2,8 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>
-    Osama Al-Momani
+        <h3 class="H3Home">Courses</h3>
+      @await Component.InvokeAsync("Course")
 
-</h1>
-@await Component.InvokeAsync("Course")
+        <h3 class="H3Home">Music Equipments</h3>
+        @await Component.InvokeAsync("Equipment")
+

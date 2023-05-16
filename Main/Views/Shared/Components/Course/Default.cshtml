@@ -14,7 +14,7 @@
                             <i class="lar la-heart icon"></i>
                         </button>
                     </span>
-                    <a asp-action="Detail"><img class="card-img-top img-fluid" src="@Url.Content(item.CourseImg)" alt="digital-chair"></a>
+                        <a asp-action="Detail" asp-area="Tutor" asp-controller="Courses" asp-route-Id="@item.CourseId"><img class="card-img-top img-fluid" src="@Url.Content(item.CourseImg)" alt="digital-chair"></a>
                 </div>
                 <div class="card-body px-20 pb-25 pt-25">
                     <div class="product-item__body text-capitalize">
@@ -36,7 +36,7 @@
                     <div class="product-item__footer">
 
                         <div class="d-flex align-items-center flex-wrap">
-                            <span class="product-desc-price">@item.Price</span>
+                            <span class="product-desc-price">$@item.Price  </span>
                         </div>
                     </div>
                     <div class="product-item__button d-flex mt-20 flex-wrap">
