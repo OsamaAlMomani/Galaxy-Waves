@@ -4073,7 +4073,7 @@ body.top-menu .navbar-left .customizer-trigger + .top-menu {
   align-items: center;
 }
 .navbar-left .sidebar-toggle {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 .navbar-left .sidebar-toggle img,
 .navbar-left .sidebar-toggle svg {
@@ -5575,7 +5575,6 @@ body.top-menu .navbar-left .customizer-trigger + .top-menu {
   font-family: "Line Awesome Free";
   font-weight: 900;
   margin-left: auto;
-  margin-right:;
   transition: var(--transition);
 }
 .sidebar__menu-group ul.sidebar_nav li > a .toggle-icon:before {

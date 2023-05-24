@@ -146,11 +146,7 @@ namespace Main.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> GiveUser_Role(user)
-        //{
-        //    return View();
-        //}
+
         #endregion
     }
 }

@@ -1,0 +1,24 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Main.Models.SharedModels
+{
+    public class Profile
+    {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public DateTime? DOB { get; set; }
+        public string? Country { get; set; }
+        public string ? Phone { get; set; }
+        public string? Gender { get; set;}
+
+        public string? CardHolderName { get; set; }
+        [Range(0,999999999999, ErrorMessage = "maz digits are 12")]
+        public string? CardNumber { get; set;}
+        public DateOnly CardDate { get; set; }
+        [Range(0,999,ErrorMessage ="number of digits must be 3")]
+        public int CVC { get; set; }
+
+
+
+    }
+}

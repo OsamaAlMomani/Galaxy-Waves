@@ -4,7 +4,7 @@ namespace Main.Models.WebAccessModel
 {
     public class Register
     {
-        [Required]
+        [Key]
         [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
         [Required]

@@ -3,6 +3,7 @@ using Main.Models.DepartmentModels;
 using Main.Models.TeacherModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Main.Models.WebAccessModel;
 
 namespace Main.DataAccess
 {

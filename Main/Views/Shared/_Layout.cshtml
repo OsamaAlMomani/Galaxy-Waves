@@ -61,7 +61,6 @@
                 </div>
             </div>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <div class="navbar-right">
                     <ul class="navbar-right__menu">
                         <li class="nav-search">
@@ -74,130 +73,146 @@
                                 <input class="form-control me-sm-2 box-shadow-none" type="search" placeholder="Search..." aria-label="Search">
                             </form>
                         </li>
-                        <li class="nav-message">
-                            <div class="dropdown-custom">
-                                <a href="javascript:;" class="nav-item-toggle icon-active">
-                                    <img class="svg" src="img/svg/message.svg" alt="img">
-                                </a>
-                                <div class="dropdown-parent-wrapper">
-                                    <div class="dropdown-wrapper">
-                                        <h2 class="dropdown-wrapper__title">Messages <span class="badge-circle badge-success ms-1">2</span></h2>
-                                        <ul>
-                                            <li class="author-online has-new-message">
-                                                <div class="user-avater">
-                                                    <img src="img/team-1.png" alt="">
-                                                </div>
-                                                <div class="user-message">
-                                                    <p>
-                                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">Web Design</a>
-                                                        <span class="time-posted">3 hrs ago</span>
-                                                    </p>
-                                                    <p>
-                                                        <span class="desc text-truncate" style="max-width: 215px;">
-                                                            Lorem
-                                                            ipsum
-                                                            dolor amet cosec Lorem ipsum
-                                                        </span>
-                                                        <span class="msg-count badge-circle badge-success badge-sm">1</span>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <a href="" class="dropdown-wrapper__more">See All Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- ends: nav-message -->
-                        <li class="nav-notification">
-                            <div class="dropdown-custom">
-                                <a href="javascript:;" class="nav-item-toggle icon-active">
-                                    <img class="svg" src="img/svg/alarm.svg" alt="img">
-                                </a>
-                                <div class="dropdown-parent-wrapper">
-                                    <div class="dropdown-wrapper">
-                                        <h2 class="dropdown-wrapper__title">Notifications <span class="badge-circle badge-warning ms-1">4</span></h2>
-                                        <ul>
-                                            <li class="nav-notification__single nav-notification__single--unread d-flex flex-wrap">
-                                                <div class="nav-notification__type nav-notification__type--primary">
-                                                    <img class="svg" src="img/svg/inbox.svg" alt="inbox">
-                                                </div>
-                                                <div class="nav-notification__details">
-                                                    <p>
-                                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
-                                                        <span>sent you a message</span>
-                                                    </p>
-                                                    <p>
-                                                        <span class="time-posted">5 hours ago</span>
-                                                    </p>
-                                                </div>
-                                            </li>
 
-                                        </ul>
-                                        <a href="" class="dropdown-wrapper__more">See all incoming activity</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-
-                        <!-- ends: .nav-flag-select -->
-                        <li class="nav-author">
-                            <div class="dropdown-custom">
-                                <a href="javascript:;" class="nav-item-toggle">
-                                    <img src="img/author-nav.jpg" alt="" class="rounded-circle">
-                                    <span class="nav-item__title">Danial<i class="las la-angle-down nav-item__arrow"></i></span>
-                                </a>
-                                <div class="dropdown-parent-wrapper">
-                                    <div class="dropdown-wrapper">
-                                        <div class="nav-author__info">
-                                            <div class="author-img">
-                                                <img src="img/author-nav.jpg" alt="" class="rounded-circle">
-                                            </div>
-                                            <div>
-                                                <h6>Rabbi Islam Rony</h6>
-                                                <span>UI Designer</span>
-                                            </div>
-                                        </div>
-                                        <div class="nav-author__options">
+                        @if(signInManager.IsSignedIn(User))
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                
+                            }
+                            <li class="nav-message">
+                                <div class="dropdown-custom">
+                                    <a href="~/javascript:;" class="nav-item-toggle icon-active">
+                                        <img class="svg" src="~/img/svg/message.svg" alt="img">
+                                    </a>
+                                    <div class="dropdown-parent-wrapper">
+                                        <div class="dropdown-wrapper">
+                                            <h2 class="dropdown-wrapper__title">Messages <span class="badge-circle badge-success ms-1">2</span></h2>
                                             <ul>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="uil uil-user"></i> Profile
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="uil uil-setting"></i>
-                                                        Settings
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="uil uil-key-skeleton"></i> Billing
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="uil uil-users-alt"></i> Activity
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="uil uil-bell"></i> Help
-                                                    </a>
+                                                <li class="author-online has-new-message">
+                                                    <div class="user-avater">
+                                                        <img src="img/team-1.png" alt="">
+                                                    </div>
+                                                    <div class="user-message">
+                                                        <p>
+                                                            <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">Web Design</a>
+                                                            <span class="time-posted">3 hrs ago</span>
+                                                        </p>
+                                                        <p>
+                                                            <span class="desc text-truncate" style="max-width: 215px;">
+                                                                Lorem
+                                                                ipsum
+                                                                dolor amet cosec Lorem ipsum
+                                                            </span>
+                                                            <span class="msg-count badge-circle badge-success badge-sm">1</span>
+                                                        </p>
+                                                    </div>
                                                 </li>
                                             </ul>
-                                            <a href="" class="nav-author__signout">
-                                                <i class="uil uil-sign-out-alt"></i> Sign Out
-                                            </a>
+                                            <a href="" class="dropdown-wrapper__more">See All Message</a>
                                         </div>
                                     </div>
-                                    <!-- ends: .dropdown-wrapper -->
                                 </div>
-                            </div>
-                        </li>
-                        <!-- ends: .nav-author -->
+                            </li>
+                            <!-- ends: nav-message -->
+                            <li class="nav-notification">
+                                <div class="dropdown-custom">
+                                    <a href="javascript:;" class="nav-item-toggle icon-active">
+                                        <img class="svg" src="img/svg/alarm.svg" alt="img">
+                                    </a>
+                                    <div class="dropdown-parent-wrapper">
+                                        <div class="dropdown-wrapper">
+                                            <h2 class="dropdown-wrapper__title">Notifications <span class="badge-circle badge-warning ms-1">4</span></h2>
+                                            <ul>
+                                                <li class="nav-notification__single nav-notification__single--unread d-flex flex-wrap">
+                                                    <div class="nav-notification__type nav-notification__type--primary">
+                                                        <img class="svg" src="img/svg/inbox.svg" alt="inbox">
+                                                    </div>
+                                                    <div class="nav-notification__details">
+                                                        <p>
+                                                            <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                                            <span>sent you a message</span>
+                                                        </p>
+                                                        <p>
+                                                            <span class="time-posted">5 hours ago</span>
+                                                        </p>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                            <a href="" class="dropdown-wrapper__more">See all incoming activity</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <!-- ends: .nav-flag-select -->
+                            <li class="nav-author">
+                                <div class="dropdown-custom">
+                                    <a href="~/javascript:;" class="nav-item-toggle">
+                                        <img src="~/img/author-nav.jpg" alt="" class="rounded-circle">
+                                        <span class="nav-item__title">Danial<i class="las la-angle-down nav-item__arrow"></i></span>
+                                    </a>
+                                    <div class="dropdown-parent-wrapper">
+                                        <div class="dropdown-wrapper">
+                                            <div class="nav-author__info">
+                                                <div class="author-img">
+                                                    <img src="img/author-nav.jpg" alt="" class="rounded-circle">
+                                                </div>
+                                                <div>
+                                                    <h6>Rabbi Islam Rony</h6>
+                                                    <span>UI Designer</span>
+                                                </div>
+                                            </div>
+                                            <div class="nav-author__options">
+                                                <ul>
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="uil uil-user"></i> Profile
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="uil uil-setting"></i>
+                                                            Settings
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="uil uil-key-skeleton"></i> Billing
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="uil uil-users-alt"></i> Activity
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="uil uil-bell"></i> Help
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <a href="" class="nav-author__signout">
+                                                    <i class="uil uil-sign-out-alt"></i> Sign Out
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- ends: .dropdown-wrapper -->
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- ends: .nav-author -->
+                        }
+                        else
+                        {
+                          <a class="btn btn-default btn-rounded color-primary btn-outline-primary " asp-action="Login" asp-controller="Account">Log In</a>
+                            <a class="btn btn-default btn-rounded color-primary btn-outline-primary " asp-action="Register" asp-controller="Account">Register</a>
+                        }
+
+
+
                     </ul>
                     <!-- ends: .navbar-right__menu -->
                     <div class="navbar-right__mobileAction d-md-none">
@@ -211,7 +226,6 @@
                     </div>
                 </div>
 
-           
         </nav>
     </header>
      <main class="main-content">
@@ -1077,319 +1091,7 @@
          <div class="products_page product_page--grid mb-30">
             <div class="container-fluid">
                <div class="row justify-content-center">
-                  <div class="columns-1 col-lg-8 col-sm-10 mb-lg-0 mb-30">
-                     <div class="widget mb-lg-30">
-                        <div class="widget-header-title px-20 py-15">
-                           <h6 class="d-flex align-content-center fw-500">
-                              <img src="~/img/svg/sliders.svg" alt="sliders" class="svg"> Filters
-                           </h6>
-                        </div>
-                        <div class="category_sidebar">
-                           <!-- Start: Aside -->
-                           <aside class="product-sidebar-widget mb-30">
-                              <!-- Title -->
-                              <div class="widget_title nocollapse">
-                                 <h6>Price Range</h6>
-                              </div>
-                              <!-- Title -->
-                              <!-- Body -->
-                              <div class="card border-0 shadow-none mt-10">
-                                 <div class="product-price-ranges">
-                                    <div id="price-range" class="mb-0">
-                                       <div class="section price">
-                                          <div class="price-slider"></div>
-                                          <p class="price-value"></p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- Body -->
-                           </aside>
-                           <!-- End: Aside -->
-                           <!-- Start: Aside -->
-                           <aside class="product-sidebar-widget mb-30">
-                              <!-- Title -->
-                              <div class="widget_title" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
-                                 <h6>Category</h6>
-                              </div>
-                              <!-- Title -->
-                              <!-- Body -->
-                              <div class="card border-0 shadow-none multi-collapse mt-10 collapse show" id="multiCollapseExample2">
-                                 <div class="product-category limit-list-item">
-                                    <ul>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Accessories<span class="item-numbers">25</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Appliances<span class="item-numbers">54</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Bags<span class="item-numbers">78</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Electronic<span class="item-numbers">42</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Entertainment<span class="item-numbers">35</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Induction<span class="item-numbers">64</span></span>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="w-100">
-                                             <span class="fs-14 color-gray">Mobile phone<span class="item-numbers">92</span></span>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                              <!-- Body -->
-                           </aside>
-                           <!-- End: Aside -->
-                           <!-- Start: Aside -->
-                           <aside class="product-sidebar-widget mb-30">
-                              <!-- Title -->
-                              <div class="widget_title" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" role="button" aria-expanded="true">
-                                 <h6>Brands</h6>
-                              </div>
-                              <!-- Title -->
-                              <!-- Body -->
-                              <div class="card border-0 shadow-none multi-collapse mt-10 collapse show" id="multiCollapseExample3">
-                                 <div class="product-brands limit-list-item">
-                                    <ul>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-1">
-                                             <label for="check-1">
-                                                <span class="checkbox-text">
-                                                   Appliances
-
-                                                   <span class="item-numbers">25</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-
-                                       </li>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-2">
-                                             <label for="check-2">
-                                                <span class="checkbox-text">
-                                                   Bags
-
-                                                   <span class="item-numbers">54</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-                                       </li>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-3">
-                                             <label for="check-3">
-                                                <span class="checkbox-text">
-                                                   Electronic
-
-                                                   <span class="item-numbers">78</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-
-                                       </li>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-4">
-                                             <label for="check-4">
-                                                <span class="checkbox-text">
-                                                   Entertainment
-
-                                                   <span class="item-numbers">42</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-
-                                       </li>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-5">
-                                             <label for="check-5">
-                                                <span class="checkbox-text">
-                                                   Induction
-
-                                                   <span class="item-numbers">35</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-
-                                       </li>
-                                       <li>
-
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="check-6">
-                                             <label for="check-6">
-                                                <span class="checkbox-text">
-                                                   Laptops
-
-                                                   <span class="item-numbers">64</span>
-
-                                                </span>
-                                             </label>
-                                          </div>
-
-
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                              <!-- Body -->
-                           </aside>
-                           <!-- End: Aside -->
-                           <!-- Start: Aside -->
-                           <aside class="product-sidebar-widget">
-                              <!-- Title -->
-                              <div class="widget_title" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" role="button" aria-expanded="true">
-                                 <h6>Ratings</h6>
-                              </div>
-                              <!-- Title -->
-                              <!-- Body -->
-                              <div class="card border-0 shadow-none multi-collapse mt-10 collapse show" id="multiCollapseExample4">
-                                 <div class="product-ratings">
-                                    <ul>
-                                       <li>
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="rating-1">
-                                             <label for="rating-1">
-
-                                                <span class="stars-rating d-flex align-items-center">
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="checkbox-text">
-                                                      and up
-                                                      <span class="item-numbers">42</span>
-                                                   </span>
-                                                </span>
-
-                                             </label>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="rating-3">
-                                             <label for="rating-3">
-
-                                                <span class="stars-rating d-flex align-items-center">
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="checkbox-text">
-                                                      and up
-                                                      <span class="item-numbers">54</span>
-                                                   </span>
-                                                </span>
-
-                                             </label>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="rating-4">
-                                             <label for="rating-4">
-
-                                                <span class="stars-rating d-flex align-items-center">
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="checkbox-text">
-                                                      and up
-                                                      <span class="item-numbers">78</span>
-                                                   </span>
-                                                </span>
-
-                                             </label>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="rating-5">
-                                             <label for="rating-5">
-
-                                                <span class="stars-rating d-flex align-items-center">
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="checkbox-text">
-                                                      and up
-                                                      <span class="item-numbers">42</span>
-                                                   </span>
-                                                </span>
-
-                                             </label>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="checkbox-theme-default custom-checkbox ">
-                                             <input class="checkbox" type="checkbox" id="rating-6">
-                                             <label for="rating-6">
-
-                                                <span class="stars-rating d-flex align-items-center">
-                                                   <span class="star-icon las la-star active"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="star-icon las la-star inactive"></span>
-                                                   <span class="checkbox-text">
-                                                      and up
-                                                      <span class="item-numbers">35</span>
-                                                   </span>
-                                                </span>
-
-                                             </label>
-                                          </div>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                              <!-- Body -->
-                           </aside>
-                           <!-- End: Aside -->
-                        </div>
-                     </div><!-- End: .widget -->
-                  </div><!-- End: .columns-1 -->
+                <!-- End: .columns-1 -->
                   <div class="columns-2 col-lg-12">
                      <!-- Start: Top Bar -->
                      <!-- Start: Top Bar -->
