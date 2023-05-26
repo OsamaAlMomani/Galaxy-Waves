@@ -20,6 +20,7 @@ namespace Main.Controllers
 
         public IActionResult Privacy()
         {
+            return RedirectToAction("Error");
             return View();
         }
 

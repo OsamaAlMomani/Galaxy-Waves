@@ -59,7 +59,9 @@
                         <img class="dark" src="~/img/logo-dark.png" alt="logo">
                         <img class="light" src="~/img/logo-white.png" alt="logo">
                     </a>
-
+                    <a href="#" class="sidebar-toggle">
+                        <img class="svg" src="~/img/svg/align-center-alt.svg" alt="img">
+                    </a>
                 </div>
             </div>
 
@@ -229,23 +231,19 @@
     <main class="main-content">
 
 
+
         <div class="contents">
 
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <!-- Start: error page -->
                         <div class="min-vh-100 content-center">
-                            <div class="error-page text-center">
-                                <img src="~/img/svg/404.svg" alt="404" class="svg">
-                                <div class="error-page__title">404</div>
-                                <h5 class="fw-500">Sorry! the page you are looking for doesn't exist.</h5>
-                                <div class="content-center mt-30">
-                                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-default btn-squared px-30">Return Home</a>
-                                </div>
+                            <div class="maintenance-page text-center">
+                                <img src="~/img/svg/maintenance.svg" alt="maintenance" class="svg" />
+                                <h5 class="maintenance-page__title">We are currently performing maintenance</h5>
+                                <p class="fw-500">We're making the system more awesome.We'll be back shortly.</p>
                             </div>
                         </div>
-                        <!-- End: error page -->
                     </div>
                 </div>
             </div>
