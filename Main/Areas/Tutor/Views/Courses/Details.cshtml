@@ -8,9 +8,11 @@
 
 <div>
    <div> 
-       <video src="@Url.Content(Model.CourseVideo)"  width="800" height="600" controls muted autoplay >
-
-       </video>
+       <video width="800" height="600" controls muted autoplay >
+            <source src="@Url.Content(Model.CourseVideo)" type="video/mp4" />
+            <source src="@Url.Content(Model.CourseVideo)" type="video/m4v" />
+            <source src="@Url.Content(Model.CourseVideo)" type="video/ogg" />
+        </video>
    </div>
    <div> 
        <h3>

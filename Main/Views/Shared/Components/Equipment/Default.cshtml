@@ -14,11 +14,11 @@
                                 <i class="lar la-heart icon"></i>
                             </button>
                         </span>
-                        <a asp-action="ViewEquipment" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@Url.Content(item.Img)" alt="digital-chair"></a>
+                        <a asp-action="ViewProduct" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@Url.Content(item.Img)" alt="digital-chair"></a>
                     </div>
                     <div class="card-body px-20 pb-25 pt-25">
                         <div class="product-item__body text-capitalize">
-                            <a asp-action="ViewEquipment" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id">
+                            <a asp-action="ViewProduct" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id">
                                 <h6 class="card-title">@item.Name</h6>
                             </a>
                             <div class="stars-rating d-flex align-items-center flex-wrap mb-10">
@@ -56,7 +56,6 @@
                             <button class="btn btn-primary btn-default btn-squared border-0 px-25">
                                 buy now
                             </button>
-
 
 
 

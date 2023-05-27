@@ -107,7 +107,7 @@ namespace Main.Areas.Admin.Controllers
                 Name = musicEquipment.Name,
                 Id  = musicEquipment.Id,
                 categoryName=musicEquipment.categoryName,
-                //Img=musicEquipment.Img,
+//Img= musicEquipment.Img,
                 About_It=musicEquipment.About_It,
                 Price= musicEquipment.Price
             };
@@ -197,23 +197,6 @@ namespace Main.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> ViewEquipment(Guid? id)
-        {
-            if (id == null || _context.musicEquipment == null)
-            {
-                return NotFound();
-            }
-
-            var musicEquipment = await _context.musicEquipment
-                .Include(m => m.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (musicEquipment == null)
-            {
-                return NotFound();
-            }
-
-            return View(musicEquipment);
-        }
         private bool MusicEquipmentExists(Guid id)
         {
           return (_context.musicEquipment?.Any(e => e.Id == id)).GetValueOrDefault();
@@ -239,6 +222,23 @@ namespace Main.Areas.Admin.Controllers
             return "\\Images\\" + newImgName;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ViewProduct(Guid? id)
+        {
+            if (id == null || _context.musicEquipment == null)
+            {
+                return NotFound();
+            }
 
+            var musicEquipment = await _context.musicEquipment
+                .Include(m => m.Category)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (musicEquipment == null)
+            {
+                return NotFound();
+            }
+
+            return View(musicEquipment);
+        }
     }
 }

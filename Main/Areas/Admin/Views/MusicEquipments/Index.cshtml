@@ -9,48 +9,62 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Img)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.About_It)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.categoryName)
-            </td>
-            <td>
-                    <img width="150px" src="@Url.Content(item.Img)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.About_It)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)$
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="contents" style="padding-top: 13px;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" >
+
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Music Cards</h4>
+                    <div class="breadcrumb-action justify-content-center flex-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard"><i class="uil uil-estate"></i>Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Music Equipment Cards</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12">
+                <div class="row" style="padding-left: 30px;">
+                    <a class="btn btn-white btn-default btn-squared btn-shadow-white " asp-action="Create" asp-controller="MusicEquipments" class=""><img src="~/img/svg/layers.svg" alt="layers" class="svg">Add More</a>
+                </div>
+                <br />
+                <div class="row">
+                    @foreach(var item in Model)
+                    {
+                                          
+                        <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
+                            <div class="feature-cards">
+                                <figure class="feature-cards__figure">
+                                    <img src="@Url.Content(item.Img)" alt="">
+                                    <figcaption>
+                                        <h4>@item.Name</h4>
+                                        <p>
+                                            @item.About_It
+                                            <br>
+                                            <span>
+                                                $@item.Price
+                                            </span>
+                                        </p>
+                                        <a asp-area="Admin" asp-action="ViewProduct" asp-controller="MusicEquipments" asp-route-id="@item.Id" class="btn-md btn">View More</a>
+                                        <a asp-area="Admin" asp-action="Edit" asp-controller="MusicEquipments" asp-route-id="@item.Id" class="btn-md btn">Edit</a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
