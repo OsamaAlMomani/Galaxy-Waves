@@ -1,4 +1,5 @@
-﻿using Main.Models.WebAccessModel;
+﻿using Google.Apis.Auth.OAuth2;
+using Main.Models.WebAccessModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,7 @@ namespace Main.Controllers
             userManager = _userManager;
             signInManager = _signInManager;
             roleManager = _roleManager;
+            
         }
 
         #endregion
