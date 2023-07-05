@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyWaves_UI", "GalaxyWaves_UI.csproj", "{979022E9-2288-4776-9E8C-435FE1D8487A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Galaxy.UnitTest", "Galaxy.UnitTest", "{8082194E-170B-4D92-A33F-B1311BC80027}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Galaxy.APIs", "Galaxy.APIs", "{0E648874-DE28-43C6-B5BA-273EA5F0F7D8}"
 EndProject
