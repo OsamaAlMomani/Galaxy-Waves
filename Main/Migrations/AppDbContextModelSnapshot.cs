@@ -199,16 +199,22 @@ namespace Main.Migrations
                         .HasDefaultValue("None");
 
                     b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("None");
 
                     b.Property<string>("Gmail")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("None");
 
                     b.Property<string>("Instegram")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LinkedIn")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("None");
 
                     b.Property<string>("Name")
                         .ValueGeneratedOnAdd()

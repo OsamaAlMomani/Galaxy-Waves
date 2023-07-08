@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Main.Migrations
 {
     /// <inheritdoc />
-    public partial class v1 : Migration
+    public partial class mg : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,6 +60,35 @@ namespace Main.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "profile",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Role_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    DOB = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    CardHolderName = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    CardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "0"),
+                    CardDate = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    CVC = table.Column<int>(type: "int", nullable: true, defaultValue: 0),
+                    LinkedIn = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Instegram = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonalWebSite = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Gmail = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None"),
+                    Outlook = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "None")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_profile", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -257,7 +286,7 @@ namespace Main.Migrations
                     CourseImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseVideo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CoreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -353,6 +382,9 @@ namespace Main.Migrations
 
             migrationBuilder.DropTable(
                 name: "musicEquipment");
+
+            migrationBuilder.DropTable(
+                name: "profile");
 
             migrationBuilder.DropTable(
                 name: "Teacher");
