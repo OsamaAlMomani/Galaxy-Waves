@@ -22,6 +22,78 @@ namespace Main.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Main.Areas.Teacher.Models.Courses.courseCategory", b =>
+                {
+                    b.Property<Guid>("courseCategory_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CoreId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("courseCategory_Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("courseCategory_Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("courseCategory_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("courseCategory_Price")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("courseCategory_Id");
+
+                    b.HasIndex("CoreId");
+
+                    b.ToTable("courseCategories", (string)null);
+                });
+
+            modelBuilder.Entity("Main.Areas.Teacher.Models.Profile.TeacherProfile", b =>
+                {
+                    b.Property<Guid>("TeacherProfile_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherProfile_Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherProfile_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherProfile_Pic")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("courseCategory_Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeacherProfile_Id");
+
+                    b.HasIndex("courseCategory_Id");
+
+                    b.ToTable("teacherProfiles", (string)null);
+                });
+
             modelBuilder.Entity("Main.Models.AdminModels.Category", b =>
                 {
                     b.Property<Guid>("CategoryId")
@@ -34,7 +106,7 @@ namespace Main.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
                 });
 
             modelBuilder.Entity("Main.Models.AdminModels.MusicEquipment", b =>
@@ -67,49 +139,7 @@ namespace Main.Migrations
 
                     b.HasIndex("categoryName");
 
-                    b.ToTable("musicEquipment");
-                });
-
-            modelBuilder.Entity("Main.Models.AdminModels.Teacher", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("About")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DOB")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("IBan")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Img")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teacher");
+                    b.ToTable("musicEquipment", (string)null);
                 });
 
             modelBuilder.Entity("Main.Models.DepartmentModels.Core", b =>
@@ -129,7 +159,7 @@ namespace Main.Migrations
 
                     b.HasIndex("SpecId");
 
-                    b.ToTable("cores");
+                    b.ToTable("cores", (string)null);
                 });
 
             modelBuilder.Entity("Main.Models.DepartmentModels.Specialization", b =>
@@ -149,7 +179,7 @@ namespace Main.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("specialization");
+                    b.ToTable("specialization", (string)null);
                 });
 
             modelBuilder.Entity("Main.Models.SharedModels.Profile", b =>
@@ -244,7 +274,7 @@ namespace Main.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("profile");
+                    b.ToTable("profile", (string)null);
                 });
 
             modelBuilder.Entity("Main.Models.TeacherModels.Course", b =>
@@ -279,7 +309,7 @@ namespace Main.Migrations
 
                     b.HasIndex("CoreId");
 
-                    b.ToTable("course");
+                    b.ToTable("course", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -478,6 +508,28 @@ namespace Main.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Main.Areas.Teacher.Models.Courses.courseCategory", b =>
+                {
+                    b.HasOne("Main.Models.DepartmentModels.Core", "core")
+                        .WithMany()
+                        .HasForeignKey("CoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("core");
+                });
+
+            modelBuilder.Entity("Main.Areas.Teacher.Models.Profile.TeacherProfile", b =>
+                {
+                    b.HasOne("Main.Areas.Teacher.Models.Courses.courseCategory", "course")
+                        .WithMany()
+                        .HasForeignKey("courseCategory_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("course");
                 });
 
             modelBuilder.Entity("Main.Models.AdminModels.MusicEquipment", b =>

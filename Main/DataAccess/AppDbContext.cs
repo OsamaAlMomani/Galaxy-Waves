@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Main.Models.WebAccessModel;
 using Main.Models.SharedModels;
+using Main.Areas.Teacher.Models.Courses;
+using Main.Areas.Teacher.Models.Profile;
 
 namespace Main.DataAccess
 {
@@ -33,14 +35,15 @@ namespace Main.DataAccess
         }
 
         public DbSet<Category> categories { get; set; }
-
-        public DbSet<Teacher> Teacher { get; set; }
         public DbSet<MusicEquipment> musicEquipment { get; set; }
         public DbSet<Specialization> specialization { get; set; }
         public DbSet<Core>cores { get; set; }
         public DbSet<Course> course { get; set; }
-
         public DbSet<Profile> profile { get; set; }
+        public DbSet<courseCategory> courseCategories { get; set; }
+        public DbSet<TeacherProfile> teacherProfiles { get; set; }
+
+
 
 
     }

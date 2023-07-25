@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Main.Areas.Teacher.Models.UI_Model.TeacherProfile_ViewModel>
+
+@{
+    ViewData["Title"] = "teacher_Dashboard";
+}
+
+<h1>teacher_Dashboard</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherProfile_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherProfile_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherProfile_Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
