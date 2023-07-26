@@ -2,10 +2,7 @@
 @foreach (var item in Model)
 {
 
-
-    <div class="cus-xl-3 col-lg-6 col-md-11 col-12 mb-30 px-10">
-
-        <div class="card product product--grid">
+        <div class="card product product--grid" >
             <div class="h-100">
                 <div class="product-item">
                     <div class="product-item__image">
@@ -14,24 +11,14 @@
                                 <i class="lar la-heart icon"></i>
                             </button>
                         </span>
-                        <a asp-action="ViewProduct" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@Url.Content(item.Img)" alt="digital-chair"></a>
+                        <a asp-action="ViewProduct" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id"><img  class="card-img-top img-fluid" src="@Url.Content(item.Img)" alt="digital-chair"></a>
                     </div>
-                    <div class="card-body px-20 pb-25 pt-25">
+                    <div class="card-body px-20 pb-25 pt-25" >
                         <div class="product-item__body text-capitalize">
                             <a asp-action="ViewProduct" asp-area="Admin" asp-controller="MusicEquipments" asp-route-id="@item.Id">
                                 <h6 class="card-title">@item.Name</h6>
                             </a>
-                            <div class="stars-rating d-flex align-items-center flex-wrap mb-10">
-                                <span class="star-icon las la-star active"></span>
-                                <span class="star-icon las la-star active"></span>
-                                <span class="star-icon las la-star active"></span>
-                                <span class="star-icon las la-star active"></span>
-                                <span class="star-icon las la-star-half-alt active"></span>
-                                <span class="stars-rating__point">4.9</span>
-                                <span class="stars-rating__review">
-                                    <span>778</span> Reviews
-                                </span>
-                            </div>
+
                         </div>
                         <div class="product-item__footer">
 
@@ -49,10 +36,6 @@
                             </button>
 
 
-
-
-
-
                             <button class="btn btn-primary btn-default btn-squared border-0 px-25">
                                 buy now
                             </button>
@@ -65,6 +48,4 @@
                 </div>
             </div>
         </div>
-
-    </div>
-}
+        }

@@ -1,4 +1,6 @@
 ﻿using Main.DataAccess;
+using Main.Models.AdminModels.ViewModel;
+using Main.Models.AdminModels;
 using Main.Models.TeacherModels;
 using Main.Models.TeacherModels.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -96,8 +98,14 @@ namespace Main.Areas.Tutor.Controllers
             {
                 return NotFound();
             }
+            CourseViewModel course_ = new CourseViewModel
+            {
+                CourseName = course.CourseName,
+                CourseId = course.CourseId,
+                CourseDescription = course.CourseDescription,
+            };
             ViewData["CoreId"] = new SelectList(_context.cores, "CoreId", "CoreName", course.CoreId);
-            return View(course);
+            return View(course_);
         }
 
         // POST: Tutor/Courses/Edit/5
@@ -116,6 +124,7 @@ namespace Main.Areas.Tutor.Controllers
             {
                 try
                 {
+
                     _context.Update(course);
                     await _context.SaveChangesAsync();
                 }
