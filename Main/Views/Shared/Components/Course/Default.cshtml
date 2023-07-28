@@ -1,18 +1,16 @@
 ﻿@model IEnumerable<Course>
+
 @foreach(var item in Model)
 {
-    
+
+    <div class="cus-xl-3 col-lg-6 col-md-11 col-12 mb-30 px-10">
 
 
     <div class="card product product--grid">
         <div class="h-100">
             <div class="product-item">
                 <div class="product-item__image">
-                    <span class="like-icon">
-                        <button type="button" class="content-center">
-                            <i class="lar la-heart icon"></i>
-                        </button>
-                    </span>
+  
                         <a asp-action="Details" asp-area="Tutor" asp-controller="Courses" asp-route-Id="@item.CourseId"><img class="card-img-top img-fluid" src="@Url.Content(item.CourseImg)" alt="digital-chair"></a>
                 </div>
                 <div class="card-body px-20 pb-25 pt-25">
@@ -56,5 +54,5 @@
         </div>
     </div>
 
-
+    </div>
 }

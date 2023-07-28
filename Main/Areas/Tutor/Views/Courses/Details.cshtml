@@ -1,5 +1,6 @@
 ﻿@model Main.Models.TeacherModels.Course
-
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
 @{
     ViewData["Title"] = "Details";
     Layout = "Tutor_Layout";
@@ -24,6 +25,14 @@
    </div>
 </div>
 <div>
-    <a asp-area = "Tutor" asp-controller="Courses" asp-action="Edit" asp-route-id="@Model?.CourseId">Edit</a> |
+  @if (signInManager.IsSignedIn(User))
+    {
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-area = "Tutor" asp-controller="Courses" asp-action="Edit" asp-route-id="@Model?.CourseId">Edit | </a>
+        }
+
+    }
     <a asp-action="Index">Back to List</a>
+    
 </div>
