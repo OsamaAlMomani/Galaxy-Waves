@@ -1,7 +1,14 @@
+using GalaxyWave.UI.DataCenter;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+builder.Services.AddDbContext<appDb>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLserver")));
 
 var app = builder.Build();
 
@@ -20,6 +27,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
