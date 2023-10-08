@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\AccessMethod\Data\" />
-    <Folder Include="Areas\AccessMethod\Views\" />
   </ItemGroup>
 
 </Project>

@@ -5,14 +5,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
 {
-    public class AccessPoint : Controller
+    [Area("AccessMethod")]
+
+    public class AccessPointController : Controller
     {
         private readonly appDb db;
 
-        public AccessPoint(appDb _db)
+        public AccessPointController(appDb _db)
         {
             db= _db;
         }
+
+        /// <summary>
+        /// 
+        ///     SignIn page checks if user has account to give access to website or reroute the user to create accounts page 
+        /// 
+        /// </summary>
+
+        [HttpGet]
         public IActionResult SignInPage()
         {
             return View();
@@ -35,7 +45,11 @@ namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
             }
             return View();
         }
-
+        /// <summary>
+        /// 
+        ///     User comes to account creation page after checking existence of his/her account in the database  
+        /// 
+        /// </summary>
         [HttpGet]
         public IActionResult RegisterPage()
         {
@@ -45,7 +59,23 @@ namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
+            if (user != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = db.users.FirstOrDefault(a => a.UserEmail == user.UserEmail);
+                     
+                    if (result == null)
+                    {
+                        db.users.Add(user);
+                        return View();
 
+                    }
+                    return View();
+
+                }
+
+            }
             return View();
         }
 
