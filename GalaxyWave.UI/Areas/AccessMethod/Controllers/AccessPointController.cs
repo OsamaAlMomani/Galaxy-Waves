@@ -1,5 +1,6 @@
 ﻿using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
 using GalaxyWave.UI.Areas.AccessMethod.Models;
+using GalaxyWave.UI.Controllers;
 using GalaxyWave.UI.DataCenter;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +28,9 @@ namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult SignIn(SignIn user)
+        public IActionResult SignInPage(SignIn user)
         {
             if (user == null)
             {
@@ -39,11 +41,11 @@ namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
             {
                 var Found = db.users.FirstOrDefault(a=>a.UserEmail ==user.Email);
                 if (Found != null) {
-                    return View(user);
+                    return RedirectToAction("Index", "HomeController");
                 }
 
             }
-            return View();
+            return View(user);
         }
         /// <summary>
         /// 
@@ -57,7 +59,7 @@ namespace GalaxyWave.UI.Areas.AccessMethod.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(User user)
+        public IActionResult RegisterPage(User user)
         {
             if (user != null)
             {
