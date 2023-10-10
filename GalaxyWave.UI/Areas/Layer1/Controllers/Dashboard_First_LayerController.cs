@@ -20,5 +20,6 @@ namespace GalaxyWave.UI.Areas.Layer1.Controllers
         {
             return View();
         }
+
     }
 }

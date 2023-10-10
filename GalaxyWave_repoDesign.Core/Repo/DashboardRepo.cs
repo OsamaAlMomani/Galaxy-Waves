@@ -3,10 +3,11 @@ using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
 using GalaxyWave.UI.DataCenter;
 using GalaxyWave_repoDesign.Core.RepoInterface;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 
 namespace GalaxyWave_repoDesign.Core.Repo
 {
-    public class DashboardRepo : IDashboard
+    public class DashboardRepo : IDashboardRepo
     {
         private readonly appDb db;
         public DashboardRepo(appDb _db)
@@ -48,18 +49,29 @@ namespace GalaxyWave_repoDesign.Core.Repo
                 db.dashboards.Remove(unNeededDashboard);
                 db.users.Remove(unNeededUser);
                 db.SaveChanges();
-
             }
         }
 
-        public void User_Dashboard_Update(User user)
+        public void User_Dashboard_Update(User user, Dashboard table)
         {
-            throw new NotImplementedException();
+            if (table != null && user != null)
+            { 
+                var DashboardIdResult = db.dashboards.Include(a=>a.UserId).FirstOrDefault(a => a.DashboardId == table.DashboardId);
+                if (DashboardIdResult != null)
+                {
+                    var result = db.dashboards.Update(table);
+                    if (result != null)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+            }
+
         }
 
         public void User_Dashboard_View(User user)
         {
-            throw new NotImplementedException();
+                throw new NotImplementedException();
         }
     }
 }
