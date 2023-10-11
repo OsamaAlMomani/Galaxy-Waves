@@ -1,7 +1,7 @@
-﻿using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
+﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements;
 using System.ComponentModel.DataAnnotations;
 
-namespace GalaxyWave.SQL_Model.Models.UsersDashboards
+namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards
 {
     public class Dashboard
     {
@@ -12,7 +12,7 @@ namespace GalaxyWave.SQL_Model.Models.UsersDashboards
 
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
-                /* Foreinkey */
+        /* Foreinkey */
         public Guid UserId { get; set; }
         public User User { get; set; }
     }

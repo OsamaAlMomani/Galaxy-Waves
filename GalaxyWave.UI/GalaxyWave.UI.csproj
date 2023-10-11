@@ -20,14 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GalaxyWave.SQL-Model\GalaxyWave.SQL-Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Areas\AccessMethod\Data\" />
     <Folder Include="Areas\Layer1\Data\" />
     <Folder Include="Areas\Layer1\Models\" />
     <Folder Include="Areas\Layer1\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GalaxyWave.SQL-Model\GalaxyWave.SQL-Model.csproj" />
   </ItemGroup>
 
 </Project>

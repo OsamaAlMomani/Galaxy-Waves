@@ -4,13 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyWave.UI", "GalaxyWave.UI.csproj", "{DDF2A109-C2F4-4171-A5CF-F32465E0D297}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4D85B019-31C6-4302-9651-DC4FABC12C5D} = {4D85B019-31C6-4302-9651-DC4FABC12C5D}
-	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyWave.SQL-Model", "..\GalaxyWave.SQL-Model\GalaxyWave.SQL-Model.csproj", "{4D85B019-31C6-4302-9651-DC4FABC12C5D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyWave_repoDesign.Core", "..\GalaxyWave_repoDesign.Core\GalaxyWave_repoDesign.Core.csproj", "{AC792A50-0B1A-4B30-BE8E-9E84FF0841D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyWave_Dashboard.Api", "..\GalaxyWave_Dashboard.Api\GalaxyWave_Dashboard.Api.csproj", "{55639A78-B2E2-4B32-8D6D-E5BDDD514C04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +17,10 @@ Global
 		{DDF2A109-C2F4-4171-A5CF-F32465E0D297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDF2A109-C2F4-4171-A5CF-F32465E0D297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDF2A109-C2F4-4171-A5CF-F32465E0D297}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D85B019-31C6-4302-9651-DC4FABC12C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D85B019-31C6-4302-9651-DC4FABC12C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D85B019-31C6-4302-9651-DC4FABC12C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D85B019-31C6-4302-9651-DC4FABC12C5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC792A50-0B1A-4B30-BE8E-9E84FF0841D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC792A50-0B1A-4B30-BE8E-9E84FF0841D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC792A50-0B1A-4B30-BE8E-9E84FF0841D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC792A50-0B1A-4B30-BE8E-9E84FF0841D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55639A78-B2E2-4B32-8D6D-E5BDDD514C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55639A78-B2E2-4B32-8D6D-E5BDDD514C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55639A78-B2E2-4B32-8D6D-E5BDDD514C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55639A78-B2E2-4B32-8D6D-E5BDDD514C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

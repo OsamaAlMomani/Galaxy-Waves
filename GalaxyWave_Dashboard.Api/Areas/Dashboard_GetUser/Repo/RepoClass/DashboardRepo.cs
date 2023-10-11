@@ -1,15 +1,16 @@
-﻿using GalaxyWave.SQL_Model.Models.UsersDashboards;
-using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
-using GalaxyWave.UI.DataCenter;
-using GalaxyWave_repoDesign.Core.RepoInterface;
+﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoInterface;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 
-namespace GalaxyWave_repoDesign.Core.Repo
+namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoClass
 {
     public class DashboardRepo : IDashboardRepo
     {
         private readonly appDb db;
+        public DashboardRepo()
+        {
+
+        }
         public DashboardRepo(appDb _db)
         {
             db = _db;
@@ -55,8 +56,8 @@ namespace GalaxyWave_repoDesign.Core.Repo
         public void User_Dashboard_Update(User user, Dashboard table)
         {
             if (table != null && user != null)
-            { 
-                var DashboardIdResult = db.dashboards.Include(a=>a.UserId).FirstOrDefault(a => a.DashboardId == table.DashboardId);
+            {
+                var DashboardIdResult = db.dashboards.Include(a => a.UserId).FirstOrDefault(a => a.DashboardId == table.DashboardId);
                 if (DashboardIdResult != null)
                 {
                     var result = db.dashboards.Update(table);
@@ -71,7 +72,7 @@ namespace GalaxyWave_repoDesign.Core.Repo
 
         public void User_Dashboard_View(User user)
         {
-                throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

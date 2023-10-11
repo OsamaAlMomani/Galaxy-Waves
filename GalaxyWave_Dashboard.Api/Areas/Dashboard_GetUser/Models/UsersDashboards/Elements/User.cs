@@ -1,18 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GalaxyWave.SQL_Model.Models.UsersDashboards.Elements
+namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements
 {
     public class User
     {
-        [Key] 
+        [Key]
         public Guid UserId { get; set; }
         public string UserName { get; set; }
         public string UserDescription { get; set; }
-        public string UserEmail {  get; set; }
+        public string UserEmail { get; set; }
 
         public DateTime DOB { get; set; }
-        public string password {  get; set; }
-        
+        public string password { get; set; }
+
         public string Gender { get; set; }
 
 
