@@ -1,4 +1,7 @@
-﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoInterface;
+﻿using GalaxyWave_Dashboard.Api.AccessData;
+using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards;
+using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements;
+using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoInterface;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 
@@ -6,12 +9,12 @@ namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoClass
 {
     public class DashboardRepo : IDashboardRepo
     {
-        private readonly appDb db;
+        private readonly AppDb db;
         public DashboardRepo()
         {
 
         }
-        public DashboardRepo(appDb _db)
+        public DashboardRepo(AppDb _db)
         {
             db = _db;
 

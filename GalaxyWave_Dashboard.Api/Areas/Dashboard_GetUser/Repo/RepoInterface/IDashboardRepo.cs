@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
-using GalaxyWave.SQL_Model.Models.UsersDashboards;
+﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards;
+using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements;
+
+
 
 namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoInterface
 {

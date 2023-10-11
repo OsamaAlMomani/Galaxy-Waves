@@ -1,4 +1,4 @@
-﻿using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
+using GalaxyWave.SQL_Model.Models.UsersDashboards.Elements;
 using GalaxyWave.UI.Areas.AccessMethod.Models;
 using GalaxyWave.UI.Controllers;
 using GalaxyWave.UI.DataCenter;
