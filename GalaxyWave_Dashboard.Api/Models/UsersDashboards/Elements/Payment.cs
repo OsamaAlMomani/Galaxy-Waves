@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements
+namespace GalaxyWave_Dashboard.Api.Models.UsersDashboards.Elements
 {
     public class Payment
     {

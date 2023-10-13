@@ -22,9 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Dashboard_GetUser\Controllers\" />
-    <Folder Include="Areas\Dashboard_GetUser\Data\" />
-    <Folder Include="Areas\Dashboard_GetUser\Views\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
 
 </Project>

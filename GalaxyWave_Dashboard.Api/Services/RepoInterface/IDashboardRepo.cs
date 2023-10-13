@@ -1,9 +1,7 @@
-﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards;
-using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements;
+﻿using GalaxyWave_Dashboard.Api.Models.UsersDashboards;
+using GalaxyWave_Dashboard.Api.Models.UsersDashboards.Elements;
 
-
-
-namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Repo.RepoInterface
+namespace GalaxyWave_Dashboard.Api.Services.Repo.RepoInterface
 {
     internal interface IDashboardRepo
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements
+namespace GalaxyWave_Dashboard.Api.Models.UsersDashboards.Elements
 {
     public class User
     {

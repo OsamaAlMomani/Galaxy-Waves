@@ -1,6 +1,6 @@
-﻿using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements;
-using GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using GalaxyWave_Dashboard.Api.Models.UsersDashboards;
+using GalaxyWave_Dashboard.Api.Models.UsersDashboards.Elements;
 
 namespace GalaxyWave_Dashboard.Api.AccessData
 {

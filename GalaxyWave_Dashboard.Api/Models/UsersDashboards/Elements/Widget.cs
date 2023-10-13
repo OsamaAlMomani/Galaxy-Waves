@@ -1,4 +1,6 @@
-﻿namespace GalaxyWave_Dashboard.Api.Areas.Dashboard_GetUser.Models.UsersDashboards.Elements
+﻿using GalaxyWave_Dashboard.Api.Models.UsersDashboards;
+
+namespace GalaxyWave_Dashboard.Api.Models.UsersDashboards.Elements
 {
     public class Widget
     {
