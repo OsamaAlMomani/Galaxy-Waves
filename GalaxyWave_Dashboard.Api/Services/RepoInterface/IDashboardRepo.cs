@@ -9,5 +9,9 @@ namespace GalaxyWave_Dashboard.Api.Services.Repo.RepoInterface
         public void User_Dashboard_Delete(User user);
         public void User_Dashboard_Update(User user, Dashboard table);
         public void User_Dashboard_View(User user);
+        public void User_Dashboard_bring(User user,int length, Dashboard dashboard);
+        public void User_Dashboard_Top();
+        public void User_Dashboard_Bottom();
+
     }
 }
