@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/eastus/connectors/ConnectionStringDefaultConnection_F70DCE3875",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/momaniazure/databases/GW_Dashboard",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionString:DefaultConnection"
+    }
+  }
+}

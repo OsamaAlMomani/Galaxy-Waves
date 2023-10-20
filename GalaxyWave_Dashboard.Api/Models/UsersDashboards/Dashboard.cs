@@ -13,7 +13,6 @@ namespace GalaxyWave_Dashboard.Api.Models.UsersDashboards
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
         /* Foreinkey */
-        public Guid UserId { get; set; }
         public User User { get; set; }
     }
 }
