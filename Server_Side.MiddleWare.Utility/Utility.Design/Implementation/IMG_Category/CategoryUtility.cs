@@ -18,31 +18,34 @@ namespace Server_Side.MiddleWare.Utility.Utility.Design.Implementation.IMG_Categ
         }
         public void addCategory(string categoryName)
         {
-            if (categoryName == null)
-            {
-                 throw new Exception("Null Value for Category name");
-            }
+            if (categoryName == null)                                                                  //  <== DOUBLE cHECK IF "category name is EXIST
+            {                                                                                          //  <== DOUBLE cHECK IF "category name is EXIST
+                 throw new Exception("Null Value for Category name");                                  //  <== DOUBLE cHECK IF "category name is EXIST
+            }                                                                                          //  <== DOUBLE cHECK IF "category name is EXIST
+                                                                                                       //  <== DOUBLE cHECK IF "category name is EXIST
+            if (true)                                                                                  //  <== DOUBLE cHECK IF "category name is EXIST
+            {                                                                                          //  <== DOUBLE cHECK IF "category name is EXIST
+                bool FindSameValue = db.categories.Any(a => a.categoryName == categoryName);           //  <== DOUBLE cHECK IF "category name is EXIST
+                if (FindSameValue)                                                                     //  <== DOUBLE cHECK IF "category name is EXIST
+                    throw new Exception("\"" + categoryName + "\"" + "Is EXIST ");                     //  <== DOUBLE cHECK IF "category name is EXIST
+            }                                                                                          //  <== DOUBLE cHECK IF "category name is EXIST
 
-            if (true)
-            {
-                bool FindSameValue = db.categories.Any(a => a.categoryName == categoryName);
-                if (FindSameValue)
-                    throw new Exception("\"" + categoryName + "\"" + "Is EXCIT ");
-            }
 
             Category newCategory = new Category
-            {
-                categoryId = Guid.NewGuid(),
-                categoryName = categoryName
-            };
-            db.categories.Add(newCategory);
-            db.SaveChanges();
+            {                                                                                        ///  Adding process 
+                categoryId = Guid.NewGuid(),                                                         ///  Adding process 
+                categoryName = categoryName                                                          ///  Adding process 
+            };                                                                                       ///  Adding process 
+            db.categories.Add(newCategory);                                                          ///  Adding process 
+            db.SaveChanges();                                                                        ///  Adding process 
+                                                                                                     ///  Adding process 
+                                                                                                     ///  Adding process 
             if (true)
-            {
-                bool FindSameValue = db.categories.Any(a => a.categoryName == categoryName);
-                if (!FindSameValue)
-                    throw new Exception("\"" + categoryName + "\"" + "Is NOT EXCIT ");
-            }
+            {                                                                                        // <== Checking if New model Added successfully 
+                bool FindSameValue = db.categories.Any(a => a.categoryName == categoryName);         // <== Checking if New model Added successfully 
+                if (!FindSameValue)                                                                  // <== Checking if New model Added successfully 
+                    throw new Exception("\"" + categoryName + "\"" + "Is NOT EXIST ");               // <== Checking if New model Added successfully 
+            }                                                                                        // <== Checking if New model Added successfully 
         }
 
         public void addImg(Guid ID, string imgURL)
