@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /src
+
+# Copy everything
+COPY . /src
+
+# Restore and build
+RUN dotnet restore "GalaxyMicro.sln"
+RUN dotnet build "GalaxyMicro.sln" --configuration Release
+
+# Run tests by default
+CMD ["dotnet", "test", "src/ProductService.Tests/ProductService.Tests.csproj", "--logger", "console;verbosity=minimal"]
