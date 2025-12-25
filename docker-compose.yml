@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16
+    container_name: whale-db
+    environment:
+      POSTGRES_DB: whale
+      POSTGRES_USER: whale_user
+      POSTGRES_PASSWORD: whale_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - whale_db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: whale-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=whale;Username=whale_user;Password=whale_pass
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  whale_db_data:

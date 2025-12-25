@@ -1,0 +1,12 @@
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\bin\Debug\net9.0\Whale.Domain.deps.json
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\bin\Debug\net9.0\Whale.Domain.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\bin\Debug\net9.0\Whale.Domain.pdb
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.AssemblyInfoInputs.cache
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.AssemblyInfo.cs
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.csproj.CoreCompileInputs.cache
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.sourcelink.json
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\refint\Whale.Domain.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\Whale.Domain.pdb
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Domain\obj\Debug\net9.0\ref\Whale.Domain.dll
