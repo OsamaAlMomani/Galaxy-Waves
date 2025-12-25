@@ -16,3 +16,5 @@ C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Wh
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Infrastructure\obj\Debug\net9.0\refint\Whale.Infrastructure.dll
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Infrastructure\obj\Debug\net9.0\Whale.Infrastructure.pdb
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Infrastructure\obj\Debug\net9.0\ref\Whale.Infrastructure.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Infrastructure\bin\Debug\net9.0\Whale.Infrastructure.runtimeconfig.json
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Infrastructure\obj\Debug\net9.0\Whale.Infrastructure.genruntimeconfig.cache

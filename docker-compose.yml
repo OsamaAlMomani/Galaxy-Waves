@@ -1,16 +1,28 @@
-# docker-compose.yml
-#
-# Placeholder compose file for the new whale-platform layout.
-# If you want this to be runnable, tell me:
-# - API port to expose
-# - whether to run the Angular app via Node container or build static assets
-# - whether you need a database (Postgres/SQL Server/etc)
-
 services:
-  whale-api:
-    # TODO: add a Dockerfile under backend/Whale.Api if you want container builds
-    # build:
-    #   context: ./backend
-    #   dockerfile: Whale.Api/Dockerfile
-    image: mcr.microsoft.com/dotnet/aspnet:8.0
-    command: ["bash", "-lc", "echo 'Add a Dockerfile to run Whale.Api via compose.'; sleep 3600"]
+  db:
+    image: postgres:16
+    container_name: whale-db
+    environment:
+      POSTGRES_DB: whale
+      POSTGRES_USER: whale_user
+      POSTGRES_PASSWORD: whale_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - whale_db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: whale-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=whale;Username=whale_user;Password=whale_pass
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  whale_db_data:
