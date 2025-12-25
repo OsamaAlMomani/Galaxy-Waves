@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Main/bin/Debug/net7.0/Main.dll",
+            "program": "${workspaceFolder}/backend/Whale.Api/bin/Debug/net8.0/Whale.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Main",
+            "cwd": "${workspaceFolder}/backend/Whale.Api",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
