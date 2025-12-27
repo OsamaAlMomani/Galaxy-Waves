@@ -50,6 +50,8 @@ namespace Whale.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Status");
+
                     b.HasIndex("TeacherUserId");
 
                     b.ToTable("Courses");
@@ -77,6 +79,8 @@ namespace Whale.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("UserId")
                         .IsUnique();
+
+                    b.HasIndex("VerificationStatus");
 
                     b.ToTable("TeacherProfiles");
                 });
@@ -113,6 +117,8 @@ namespace Whale.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("Email")
                         .IsUnique();
+
+                    b.HasIndex("Status");
 
                     b.ToTable("Users");
                 });

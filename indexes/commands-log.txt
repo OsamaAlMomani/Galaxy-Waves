@@ -1,0 +1,122 @@
+Whale Platform - Command Log / Cheat Sheet
+Date: 2025-12-27
+Workspace: C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform
+
+============================================================
+1) Docker (Database container)
+============================================================
+
+# Start all services (build images if needed)
+# (You previously ran this; useful when containers/images are missing or changed)
+docker compose up --build -d
+
+# See container status and ports
+# (We used this to confirm Postgres is running)
+docker compose ps
+
+# Optional: follow logs for the DB (or any service)
+# docker compose logs -f db
+
+============================================================
+2) EF Core tooling (IMPORTANT: local dotnet-ef for net9)
+============================================================
+
+Problem we hit:
+- Global dotnet-ef v10 crashed when running against your net9 startup project.
+Solution:
+- Use a repo-local dotnet tool manifest and install dotnet-ef 9.x.
+
+# Create local tool manifest (only needed once per repo clone)
+dotnet new tool-manifest
+
+# Install repo-local dotnet-ef compatible with EF Core 9 / net9 projects
+# (We installed 9.0.11)
+dotnet tool install dotnet-ef --version 9.0.11
+
+# After cloning repo on a new machine, restore tools from manifest
+dotnet tool restore
+
+# List locally installed dotnet tools
+dotnet tool list
+
+============================================================
+3) EF Core database migration workflow (PostgreSQL)
+============================================================
+
+Notes:
+- Migrations live in: backend\Whale.Infrastructure\Persistence\Migrations
+- Startup project is: backend\Whale.Api\Whale.Api.csproj
+- Migrations project is: backend\Whale.Infrastructure\Whale.Infrastructure.csproj
+- Always prefer the local tool: dotnet tool run dotnet-ef ...
+
+A) Apply existing migrations to the database
+------------------------------------------
+# Applies migrations to the configured DB connection (Development environment by default)
+dotnet tool run dotnet-ef database update \
+  --project backend\Whale.Infrastructure\Whale.Infrastructure.csproj \
+  --startup-project backend\Whale.Api\Whale.Api.csproj \
+  --verbose
+
+B) If EF says “PendingModelChangesWarning”
+-----------------------------------------
+# That means your code model changed but you haven’t created a migration yet.
+# Create a new migration (we used this exact name):
+dotnet tool run dotnet-ef migrations add PendingModelChanges_2025_12_27 \
+  --project backend\Whale.Infrastructure\Whale.Infrastructure.csproj \
+  --startup-project backend\Whale.Api\Whale.Api.csproj \
+  --output-dir Persistence\Migrations \
+  --verbose
+
+# Then apply the migrations:
+dotnet tool run dotnet-ef database update \
+  --project backend\Whale.Infrastructure\Whale.Infrastructure.csproj \
+  --startup-project backend\Whale.Api\Whale.Api.csproj \
+  --verbose
+
+C) Undo the last migration (if you just created it and haven’t applied it)
+------------------------------------------------------------------------
+# dotnet tool run dotnet-ef migrations remove \
+#   --project backend\Whale.Infrastructure\Whale.Infrastructure.csproj \
+#   --startup-project backend\Whale.Api\Whale.Api.csproj
+
+============================================================
+4) Build / verify backend
+============================================================
+
+# Build whole solution
+dotnet build backend\Whale.sln
+
+# VS Code task equivalent (if you prefer Tasks):
+# Task label: build
+
+============================================================
+5) Generate full file/folder tree indexes
+============================================================
+
+# Ensure indexes folder exists (PowerShell)
+New-Item -ItemType Directory -Force indexes | Out-Null
+
+# Full tree for entire repo (ASCII-safe)
+tree /F /A . > indexes\full-tree.txt
+
+# Migrations tree only
+tree /F backend\Whale.Infrastructure\Persistence\Migrations > indexes\migrations-tree.txt
+
+# Frontend Angular src tree only
+tree /F frontend\admin\src > indexes\frontend-admin-src-tree.txt
+
+# Docs boilerplate src tree only
+tree /F documentation\hexadash-angular-boilerplate\src > indexes\docs-boilerplate-src-tree.txt
+
+# Preview the first N lines of an index file (PowerShell example)
+# Get-Content indexes\full-tree.txt -TotalCount 120
+
+============================================================
+6) What changed in the DB migration today
+============================================================
+
+- Installed local tool manifest: .config\dotnet-tools.json
+- Installed repo-local dotnet-ef: 9.0.11
+- Created migration:
+  backend\Whale.Infrastructure\Persistence\Migrations\20251227140040_PendingModelChanges_2025_12_27.cs
+- Applied migration to Postgres container whale-db.
