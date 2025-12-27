@@ -138,3 +138,4 @@ C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Wh
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\obj\Debug\net9.0\swae.build.ex.cache
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\HealthChecks.NpgSql.dll
