@@ -6,6 +6,11 @@ Monorepo layout:
 - `frontend/admin/` — HexaDash Angular (selected build)
 - `documentation/` — vendor docs + notes
 
+## Project documentation
+
+- Full codebase map (backend + frontend + docker): `documentation/whale_platform_project_map.md`
+- Per-folder file structure (what each file/script does): `documentation/whale_platform_file_structure.md`
+
 ## Backend
 
 - Solution: `backend/Whale.sln`

@@ -37,7 +37,8 @@ public static class DbSeeder
             Email = "admin@whale.local",
             FullName = "Whale Admin",
             Role = UserRole.Admin,
-            Status = UserStatus.Active
+            Status = UserStatus.Active,
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123!")
         };
 
         var teacher1 = new User

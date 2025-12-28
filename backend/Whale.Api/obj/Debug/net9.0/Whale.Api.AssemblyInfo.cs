@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Whale.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f6bd0577cb3254e95cc2eb6a58589cae450b85b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f21ae36bf2ce7505190dfc228a39149fb54759b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Whale.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Whale.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
