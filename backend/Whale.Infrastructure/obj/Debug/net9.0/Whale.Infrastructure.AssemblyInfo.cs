@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Whale.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22ee5947883e2b1e0f2887cc32765c12498a6e5d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+978825c07ce4f32b881c7259579cc036774167ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("Whale.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Whale.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
