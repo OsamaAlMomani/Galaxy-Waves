@@ -27,4 +27,6 @@ public class User
 
     public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
     public DateTime? LastSeenAtUtc { get; set; }
+    
+    public string PasswordHash { get; set; } = string.Empty;
 }
