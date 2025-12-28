@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Whale.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f21ae36bf2ce7505190dfc228a39149fb54759b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22ee5947883e2b1e0f2887cc32765c12498a6e5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Whale.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Whale.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

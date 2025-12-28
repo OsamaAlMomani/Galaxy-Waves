@@ -140,3 +140,8 @@ C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Wh
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\obj\Debug\net9.0\swae.build.ex.cache
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\HealthChecks.NpgSql.dll
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Api\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

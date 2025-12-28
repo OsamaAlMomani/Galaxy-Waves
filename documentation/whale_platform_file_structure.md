@@ -70,17 +70,21 @@ backend/Whale.Api/
   appsettings.Development.json
   Whale.Api.csproj
   Whale.Api.http
+  Controllers/
+    AuthController.cs
+    AdminUsersController.cs
+    AdminTeachersController.cs
+    AdminCoursesController.cs
+    AdminDashboardController.cs
   Contracts/
     ApiError.cs
+    Auth/
+      LoginRequest.cs
+      LoginResponse.cs
   Middleware/
     CorrelationIdMiddleware.cs
   Properties/
     launchSettings.json
-    Controllers/
-      AdminDashboardController.cs
-      AdminUsersController.cs
-      AdminTeachersController.cs
-      AdminCoursesController.cs
 ```
 
 - `Program.cs`
@@ -123,6 +127,10 @@ backend/Whale.Api/
 - `AdminCoursesController.cs`
   - `GET /api/admin/courses` returns a paged list of courses + teacher user info.
   - Supports `page`, `pageSize`, `search`, `status`.
+
+**Controllers (Auth APIs)**
+- `AuthController.cs`
+  - `POST /api/auth/login` issues a JWT token for a valid user.
 
 ---
 
