@@ -7,7 +7,8 @@ using Whale.Infrastructure.Persistence;
 
 namespace Whale.Api.Controllers;
 
-[ApiController]
+[ApiController][Authorize(Roles = "Admin")]
+
 [Route("api/admin/teachers")]
 public class AdminTeachersController : ControllerBase
 {
