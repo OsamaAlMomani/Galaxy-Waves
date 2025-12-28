@@ -27,7 +27,22 @@ public static class DbSeeder
             }
         }
 
-        // If already seeded, do nothing
+        // Ensure admin can log in even if the DB was previously seeded
+        // (older seed versions may have created admin without PasswordHash).
+        var adminEmail = "admin@whale.local";
+        var existingAdmin = await db.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == adminEmail);
+        if (existingAdmin is not null)
+        {
+            if (string.IsNullOrWhiteSpace(existingAdmin.PasswordHash))
+            {
+                existingAdmin.PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123!");
+                await db.SaveChangesAsync();
+            }
+
+            return;
+        }
+
+        // If already seeded (but no admin), do nothing
         if (await db.Users.AnyAsync())
             return;
 

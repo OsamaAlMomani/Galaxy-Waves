@@ -1,5 +1,9 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Whale.Api.Auth;
 using Whale.Api.Contracts;
 using Whale.Api.Middleware;
 using Whale.Infrastructure.Persistence;
@@ -9,6 +13,30 @@ var builder = WebApplication.CreateBuilder(args);
 // --------------------
 // Services
 // --------------------
+
+var jwt = builder.Configuration.GetSection("Jwt").Get<JwtOptions>()!;
+var key = Encoding.UTF8.GetBytes(jwt.Key);
+
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
+builder.Services.AddScoped<JwtTokenService>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwt.Issuer,
+            ValidAudience = jwt.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+    });
+
+builder.Services.AddAuthorization();
+
 builder.Services.AddControllers()
     .ConfigureApiBehaviorOptions(options =>
     {
@@ -107,6 +135,7 @@ if (app.Environment.IsDevelopment())
 // Keep it if you're sure about your reverse proxy setup.
 // app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 // --------------------

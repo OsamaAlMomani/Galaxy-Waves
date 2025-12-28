@@ -6,6 +6,7 @@ using Whale.Infrastructure.Persistence;
 namespace Whale.Api.Controllers;
 
 [ApiController]
+[Authorize(Roles = "Admin")]
 [Route("api/admin/dashboard")]
 public class AdminDashboardController : ControllerBase
 {
