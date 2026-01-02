@@ -1,0 +1,21 @@
+.mb-25 {
+  margin-bottom: 25px;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+pre {
+  max-height: 400px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+nz-input-number {
+  width: 100%;
+}

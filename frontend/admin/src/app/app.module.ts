@@ -25,6 +25,11 @@ import { FullLayoutComponent } from './layouts/full-layout/full-layout.component
 import { ThemeConstantService } from './shared/services/theme-constant.service';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { AdminDashboardService } from './shared/services/admin/admin-dashboard.service';
+import { AdminUsersService } from './shared/services/admin/admin-users.service';
+import { AdminTeachersService } from './shared/services/admin/admin-teachers.service';
+import { AdminCoursesService } from './shared/services/admin/admin-courses.service';
+import { AuthenticationService } from './shared/services/authentication.service';
 
 registerLocaleData(en);
 
@@ -67,7 +72,12 @@ registerLocaleData(en);
             useClass: ErrorInterceptor,
             multi: true
         },
-        ThemeConstantService
+        ThemeConstantService,
+        AdminDashboardService,
+        AdminUsersService,
+        AdminTeachersService,
+        AdminCoursesService,
+        AuthenticationService
     ],
     bootstrap: [AppComponent]
 })

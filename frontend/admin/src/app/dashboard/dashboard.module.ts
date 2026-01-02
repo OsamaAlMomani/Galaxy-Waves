@@ -37,6 +37,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BaseChartDirective } from 'ng2-charts';
@@ -108,6 +110,7 @@ import { socialMediaTrafficComponent2 } from '../container/dashboard/demoNine/so
 import { googleMapMiniComponent } from '../container/dashboard/demoNine/googleMap';
 import { DanialFullComponent2 } from '../container/dashboard/demoTen/danial.component';
 import { AppCalendarTwoComponent } from '../container/dashboard/demoNine/calendar-mini';
+import { AdminTestComponent } from '../container/dashboard/admin-test/admin-test.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -148,7 +151,9 @@ const antdModule = [
     NgApexchartsModule,
     PerfectScrollbarModule,
     FullCalendarModule,
-    NzMessageModule
+    NzMessageModule,
+    NzAlertModule,
+    NzInputNumberModule
 ]
 
 @NgModule({
@@ -230,7 +235,8 @@ const antdModule = [
         TodoComponent2,
         socialMediaTrafficComponent2,
         googleMapMiniComponent,
-        AppCalendarTwoComponent
+        AppCalendarTwoComponent,
+        AdminTestComponent
     ],
     providers: [
         ThemeConstantService,

@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="breadcrumb-main">
+        <h4 class="text-capitalize breadcrumb-title">Admin API Test</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <nz-card nzTitle="Dashboard Statistics" class="mb-25">
+        <button nz-button nzType="primary" (click)="loadDashboard()" [nzLoading]="dashboardLoading">
+          <span nz-icon nzType="reload"></span>
+          Load Dashboard
+        </button>
+
+        <nz-alert *ngIf="dashboardError" nzType="error" [nzMessage]="dashboardError" nzShowIcon class="mt-3"></nz-alert>
+
+        <div *ngIf="dashboardData" class="mt-3">
+          <pre class="bg-light p-3 rounded">{{ dashboardData | json }}</pre>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+
+  <!-- Users Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <nz-card nzTitle="Users Management" class="mb-25">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <input nz-input placeholder="Search users..." [(ngModel)]="usersSearch" />
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="usersPage" [nzMin]="1" [nzPlaceHolder]="'Page'"></nz-input-number>
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="usersPageSize" [nzMin]="1" [nzMax]="100" [nzPlaceHolder]="'Page Size'"></nz-input-number>
+          </div>
+          <div class="col-md-3">
+            <button nz-button nzType="primary" (click)="loadUsers()" [nzLoading]="usersLoading">
+              <span nz-icon nzType="search"></span>
+              Load Users
+            </button>
+          </div>
+        </div>
+
+        <nz-alert *ngIf="usersError" nzType="error" [nzMessage]="usersError" nzShowIcon></nz-alert>
+
+        <div *ngIf="usersData" class="mt-3">
+          <nz-tag nzColor="blue">Total: {{ usersData.totalCount }}</nz-tag>
+          <nz-tag nzColor="green">Page {{ usersData.pageNumber }} of {{ usersData.totalPages }}</nz-tag>
+          <pre class="bg-light p-3 rounded mt-2">{{ usersData | json }}</pre>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+
+  <!-- Teachers Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <nz-card nzTitle="Teachers Management" class="mb-25">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <input nz-input placeholder="Search teachers..." [(ngModel)]="teachersSearch" />
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="teachersPage" [nzMin]="1" [nzPlaceHolder]="'Page'"></nz-input-number>
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="teachersPageSize" [nzMin]="1" [nzMax]="100" [nzPlaceHolder]="'Page Size'"></nz-input-number>
+          </div>
+          <div class="col-md-3">
+            <button nz-button nzType="primary" (click)="loadTeachers()" [nzLoading]="teachersLoading">
+              <span nz-icon nzType="search"></span>
+              Load Teachers
+            </button>
+          </div>
+        </div>
+
+        <nz-alert *ngIf="teachersError" nzType="error" [nzMessage]="teachersError" nzShowIcon></nz-alert>
+
+        <div *ngIf="teachersData" class="mt-3">
+          <nz-tag nzColor="blue">Total: {{ teachersData.totalCount }}</nz-tag>
+          <nz-tag nzColor="green">Page {{ teachersData.pageNumber }} of {{ teachersData.totalPages }}</nz-tag>
+          <pre class="bg-light p-3 rounded mt-2">{{ teachersData | json }}</pre>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+
+  <!-- Courses Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <nz-card nzTitle="Courses Management" class="mb-25">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <input nz-input placeholder="Search courses..." [(ngModel)]="coursesSearch" />
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="coursesPage" [nzMin]="1" [nzPlaceHolder]="'Page'"></nz-input-number>
+          </div>
+          <div class="col-md-2">
+            <nz-input-number [(ngModel)]="coursesPageSize" [nzMin]="1" [nzMax]="100" [nzPlaceHolder]="'Page Size'"></nz-input-number>
+          </div>
+          <div class="col-md-3">
+            <button nz-button nzType="primary" (click)="loadCourses()" [nzLoading]="coursesLoading">
+              <span nz-icon nzType="search"></span>
+              Load Courses
+            </button>
+          </div>
+        </div>
+
+        <nz-alert *ngIf="coursesError" nzType="error" [nzMessage]="coursesError" nzShowIcon></nz-alert>
+
+        <div *ngIf="coursesData" class="mt-3">
+          <nz-tag nzColor="blue">Total: {{ coursesData.totalCount }}</nz-tag>
+          <nz-tag nzColor="green">Page {{ coursesData.pageNumber }} of {{ coursesData.totalPages }}</nz-tag>
+          <pre class="bg-light p-3 rounded mt-2">{{ coursesData | json }}</pre>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>

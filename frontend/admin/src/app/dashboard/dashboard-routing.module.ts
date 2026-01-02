@@ -11,6 +11,7 @@ import { DemoSevenComponent } from './demo-seven/demo-seven.component';
 import { DemoEightComponent } from './demo-eight/demo-eight.component';
 import { DemoNineComponent } from './demo-nine/demo-nine.component';
 import { DemoTenComponent } from './demo-ten/demo-ten.component';
+import { AdminTestComponent } from '../container/dashboard/admin-test/admin-test.component';
 
 const routes: Routes = [
     {
@@ -81,6 +82,13 @@ const routes: Routes = [
       component: DemoTenComponent,
       data: {
           title: 'Demo ten',
+      }
+    },
+    {
+      path: 'admin-test',
+      component: AdminTestComponent,
+      data: {
+          title: 'Admin API Test',
       }
     },
 ];
