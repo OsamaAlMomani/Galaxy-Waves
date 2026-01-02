@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { Login1Component } from './login-1/login-1.component';
 import { SignUp1Component } from './sign-up-1/sign-up-1.component';
 import { ForgetPassComponent } from './forget-pass/forget-pass.component';
+import { LoginTestComponent } from './login-test/login-test.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,13 @@ const routes: Routes = [
       component: ForgetPassComponent,
       data: {
           title: 'forget-pass'
+      }
+  },
+    {
+      path: 'login-test',
+      component: LoginTestComponent,
+      data: {
+          title: 'Login Test'
       }
   }
 ];

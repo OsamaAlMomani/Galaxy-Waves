@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <nz-card nzTitle="Login Test - Backend Integration">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input nz-input [(ngModel)]="email" placeholder="Enter email" [disabled]="loading" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input nz-input type="password" [(ngModel)]="password" placeholder="Enter password" [disabled]="loading" />
+        </div>
+
+        <div class="mb-3">
+          <button nz-button nzType="primary" nzBlock (click)="onLogin()" [nzLoading]="loading">
+            <span nz-icon nzType="login"></span>
+            Login
+          </button>
+        </div>
+
+        <div class="mb-3">
+          <button nz-button nzBlock (click)="onLogout()">
+            <span nz-icon nzType="logout"></span>
+            Logout
+          </button>
+        </div>
+
+        <nz-alert *ngIf="success" nzType="success" [nzMessage]="success" nzShowIcon class="mb-3"></nz-alert>
+        <nz-alert *ngIf="error" nzType="error" [nzMessage]="error" nzShowIcon class="mb-3"></nz-alert>
+
+        <div *ngIf="getCurrentUser()" class="mt-3">
+          <nz-divider nzText="Current User"></nz-divider>
+          <pre class="bg-light p-3 rounded">{{ getCurrentUser() | json }}</pre>
+        </div>
+
+        <nz-divider nzText="Test Credentials"></nz-divider>
+        <div class="alert alert-info">
+          <strong>Default Test Credentials:</strong><br>
+          Email: admin&#64;whale.com<br>
+          Password: admin123
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>
