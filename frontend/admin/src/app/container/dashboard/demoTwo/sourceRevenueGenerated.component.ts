@@ -151,9 +151,6 @@ export class SourceRevenueGenerated {
           colors: '#525768',
         },
         markers: {
-          width: 7,
-          height: 7,
-          radius: 20,
           offsetX: -4,
         },
         itemMargin: {

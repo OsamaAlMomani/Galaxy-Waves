@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj": {}
+    "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj": {
+    "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj",
         "projectName": "Whale.Domain",
-        "projectPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj",
-        "packagesPath": "C:\\Users\\osama\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\Whale.Domain.csproj",
+        "packagesPath": "C:\\Users\\Osama Al-Momani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\osama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Osama Al-Momani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

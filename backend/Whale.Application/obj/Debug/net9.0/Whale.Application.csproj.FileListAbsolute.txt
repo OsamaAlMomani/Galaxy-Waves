@@ -14,3 +14,19 @@ C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Wh
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\refint\Whale.Application.dll
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.pdb
 C:\Users\osama\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\ref\Whale.Application.dll
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\bin\Debug\net9.0\Whale.Application.deps.json
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\bin\Debug\net9.0\Whale.Application.dll
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\bin\Debug\net9.0\Whale.Application.pdb
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\bin\Debug\net9.0\Whale.Domain.dll
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\bin\Debug\net9.0\Whale.Domain.pdb
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.csproj.AssemblyReference.cache
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.AssemblyInfoInputs.cache
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.AssemblyInfo.cs
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.csproj.CoreCompileInputs.cache
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.sourcelink.json
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Ap.3F5946B2.Up2Date
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.dll
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\refint\Whale.Application.dll
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\Whale.Application.pdb
+C:\Users\Osama Al-Momani\OneDrive\Desktop\Galaxy-PP\Galaxy-Waves\whale-platform\backend\Whale.Application\obj\Debug\net9.0\ref\Whale.Application.dll

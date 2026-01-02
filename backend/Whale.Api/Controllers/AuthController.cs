@@ -5,8 +5,10 @@ using Whale.Api.Contracts;
 using Whale.Api.Contracts.Auth;
 using Whale.Api.Middleware;
 using Whale.Infrastructure.Persistence;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Whale.Api.Controllers;
+
 
 [ApiController]
 [Route("api/auth")]
@@ -20,7 +22,8 @@ public sealed class AuthController : ControllerBase
         _db = db;
         _jwt = jwt;
     }
-
+    
+    [EnableRateLimiting("auth")]
     [HttpPost("login")]
     public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequest request)
     {

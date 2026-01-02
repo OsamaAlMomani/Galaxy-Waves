@@ -4,8 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../interfaces/user.type';
+import { environment } from '../../../environments/environment';
 
-const USER_AUTH_API_URL = '/api-url';
+const USER_AUTH_API_URL = `${environment.apiUrl}/auth/login`;
 
 @Injectable()
 export class AuthenticationService {
@@ -21,14 +22,19 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(USER_AUTH_API_URL, { username, password })
-        .pipe(map(user => {
-            if (user && user.token) {
+    login(email: string, password: string) {
+        return this.http.post<any>(USER_AUTH_API_URL, { email, password })
+        .pipe(map(response => {
+            if (response && response.token) {
+                const user = {
+                    email: email,
+                    token: response.token,
+                    role: response.role || 'User'
+                };
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
             }
-            return user;
+            return response;
         }));
     }
 

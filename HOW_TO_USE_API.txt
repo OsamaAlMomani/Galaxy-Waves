@@ -1,0 +1,497 @@
+================================================================================
+WHALE PLATFORM - FRONTEND TO BACKEND API INTEGRATION GUIDE
+================================================================================
+
+QUICK START
+-----------
+
+1. VERIFY BACKEND IS RUNNING
+   - Open browser: http://localhost:8080/health
+   - Should show: "Healthy"
+   - If not, run: docker-compose up -d
+
+2. START FRONTEND
+   - Open terminal in: frontend/admin
+   - Run: npm start
+   - Opens browser at: http://localhost:4200
+   - Redirects to: /authentication/login-1
+
+3. TEST LOGIN
+   - Enter credentials from your database
+   - On success: redirects to /dashboard/demo-one
+   - Check browser DevTools > Network tab
+   - Should see: POST http://localhost:8080/api/auth/login
+
+
+================================================================================
+HOW TO USE THE ADMIN SERVICES IN YOUR COMPONENTS
+================================================================================
+
+EXAMPLE 1: DASHBOARD STATISTICS
+--------------------------------
+
+Step 1: Import the service in your component
+   
+   import { AdminDashboardService } from '../../shared/services/admin/admin-dashboard.service';
+
+Step 2: Inject it in constructor
+
+   constructor(private dashboardService: AdminDashboardService) {}
+
+Step 3: Call the API
+
+   ngOnInit() {
+     this.dashboardService.getDashboard().subscribe({
+       next: (data) => {
+         console.log('Total Users:', data.totalUsers);
+         console.log('Active Users:', data.activeUsers);
+         console.log('Total Teachers:', data.totalTeachers);
+         console.log('Pending Teachers:', data.pendingTeachers);
+         console.log('Total Courses:', data.totalCourses);
+         console.log('Published Courses:', data.publishedCourses);
+       },
+       error: (err) => {
+         console.error('Error loading dashboard:', err);
+       }
+     });
+   }
+
+
+EXAMPLE 2: GET USERS LIST WITH PAGINATION
+------------------------------------------
+
+Step 1: Import service and models
+
+   import { AdminUsersService } from '../../shared/services/admin/admin-users.service';
+   import { UserListItemDto, PagedResult } from '../../shared/models/admin.models';
+
+Step 2: Declare component properties
+
+   users: UserListItemDto[] = [];
+   totalUsers = 0;
+   currentPage = 1;
+   pageSize = 20;
+
+Step 3: Inject service
+
+   constructor(private usersService: AdminUsersService) {}
+
+Step 4: Load users
+
+   loadUsers() {
+     const query = {
+       page: this.currentPage,
+       pageSize: this.pageSize,
+       search: '',           // Optional: search by email or name
+       status: 'Active'      // Optional: filter by status
+     };
+
+     this.usersService.getUsers(query).subscribe({
+       next: (result) => {
+         this.users = result.items;
+         this.totalUsers = result.total;
+         console.log('Loaded', result.items.length, 'users');
+       },
+       error: (err) => {
+         console.error('Error loading users:', err);
+       }
+     });
+   }
+
+Step 5: Pagination helper methods
+
+   nextPage() {
+     this.currentPage++;
+     this.loadUsers();
+   }
+
+   previousPage() {
+     if (this.currentPage > 1) {
+       this.currentPage--;
+       this.loadUsers();
+     }
+   }
+
+
+EXAMPLE 3: GET TEACHERS WITH SEARCH
+------------------------------------
+
+Step 1: Setup
+
+   import { AdminTeachersService } from '../../shared/services/admin/admin-teachers.service';
+   import { TeacherListItemDto } from '../../shared/models/admin.models';
+
+   teachers: TeacherListItemDto[] = [];
+   searchText = '';
+
+Step 2: Inject
+
+   constructor(private teachersService: AdminTeachersService) {}
+
+Step 3: Load with search
+
+   searchTeachers() {
+     const query = {
+       page: 1,
+       pageSize: 20,
+       search: this.searchText,
+       status: 'Pending'  // Show only pending teachers
+     };
+
+     this.teachersService.getTeachers(query).subscribe({
+       next: (result) => {
+         this.teachers = result.items;
+       },
+       error: (err) => {
+         console.error('Error:', err);
+       }
+     });
+   }
+
+
+EXAMPLE 4: GET COURSES WITH FILTERS
+------------------------------------
+
+Step 1: Setup
+
+   import { AdminCoursesService } from '../../shared/services/admin/admin-courses.service';
+   import { CourseListItemDto } from '../../shared/models/admin.models';
+
+   courses: CourseListItemDto[] = [];
+   selectedStatus = 'Published';
+
+Step 2: Inject
+
+   constructor(private coursesService: AdminCoursesService) {}
+
+Step 3: Load courses
+
+   loadCourses() {
+     const query = {
+       page: 1,
+       pageSize: 20,
+       status: this.selectedStatus  // Draft, Published, or Archived
+     };
+
+     this.coursesService.getCourses(query).subscribe({
+       next: (result) => {
+         this.courses = result.items;
+         console.log('Total courses:', result.total);
+       },
+       error: (err) => {
+         console.error('Error:', err);
+       }
+     });
+   }
+
+
+================================================================================
+COMPLETE COMPONENT EXAMPLE
+================================================================================
+
+FILE: src/app/dashboard/admin-dashboard.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { AdminDashboardService } from '../../shared/services/admin/admin-dashboard.service';
+import { AdminUsersService } from '../../shared/services/admin/admin-users.service';
+import { AdminDashboardDto, UserListItemDto } from '../../shared/models/admin.models';
+
+@Component({
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html'
+})
+export class AdminDashboardComponent implements OnInit {
+  // Dashboard data
+  dashboardStats: AdminDashboardDto | null = null;
+  
+  // Recent users
+  recentUsers: UserListItemDto[] = [];
+  
+  // Loading states
+  loadingDashboard = false;
+  loadingUsers = false;
+  
+  // Error messages
+  errorMessage = '';
+
+  constructor(
+    private dashboardService: AdminDashboardService,
+    private usersService: AdminUsersService
+  ) {}
+
+  ngOnInit() {
+    this.loadDashboard();
+    this.loadRecentUsers();
+  }
+
+  loadDashboard() {
+    this.loadingDashboard = true;
+    this.errorMessage = '';
+    
+    this.dashboardService.getDashboard().subscribe({
+      next: (data) => {
+        this.dashboardStats = data;
+        this.loadingDashboard = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Failed to load dashboard statistics';
+        this.loadingDashboard = false;
+        console.error('Dashboard error:', err);
+      }
+    });
+  }
+
+  loadRecentUsers() {
+    this.loadingUsers = true;
+    
+    this.usersService.getUsers({ page: 1, pageSize: 5 }).subscribe({
+      next: (result) => {
+        this.recentUsers = result.items;
+        this.loadingUsers = false;
+      },
+      error: (err) => {
+        this.loadingUsers = false;
+        console.error('Users error:', err);
+      }
+    });
+  }
+
+  refresh() {
+    this.loadDashboard();
+    this.loadRecentUsers();
+  }
+}
+
+
+================================================================================
+API ENDPOINTS REFERENCE
+================================================================================
+
+AUTHENTICATION
+--------------
+POST   /api/auth/login          - Login with email/password
+POST   /api/auth/register       - Register new user
+
+ADMIN DASHBOARD
+---------------
+GET    /api/admin/dashboard     - Get statistics (requires Admin role)
+
+ADMIN USERS
+-----------
+GET    /api/admin/users         - Get users list (requires Admin role)
+       Query params: ?page=1&pageSize=20&search=john&status=Active
+
+ADMIN TEACHERS
+--------------
+GET    /api/admin/teachers      - Get teachers list (requires Admin role)
+       Query params: ?page=1&pageSize=20&search=jane&status=Pending
+
+ADMIN COURSES
+-------------
+GET    /api/admin/courses       - Get courses list (requires Admin role)
+       Query params: ?page=1&pageSize=20&search=angular&status=Published
+
+HEALTH CHECKS
+-------------
+GET    /health                  - Basic health check
+GET    /health/ready            - Readiness check (API + DB)
+
+
+================================================================================
+QUERY PARAMETERS
+================================================================================
+
+All list endpoints support these query parameters:
+
+page        - Page number (default: 1)
+pageSize    - Items per page (default: 20, max: 100)
+search      - Search text (searches relevant fields)
+status      - Filter by status (varies by endpoint)
+
+Examples:
+  /api/admin/users?page=1&pageSize=20
+  /api/admin/users?search=john
+  /api/admin/users?status=Active
+  /api/admin/users?page=2&pageSize=50&search=john&status=Active
+
+
+================================================================================
+RESPONSE FORMATS
+================================================================================
+
+PAGINATED RESPONSE:
+{
+  "items": [...],          // Array of items
+  "total": 100,            // Total count of all items
+  "page": 1,               // Current page number
+  "pageSize": 20,          // Items per page
+  "totalPages": 5          // Total number of pages
+}
+
+DASHBOARD RESPONSE:
+{
+  "totalUsers": 150,
+  "activeUsers": 120,
+  "totalTeachers": 25,
+  "pendingTeachers": 5,
+  "approvedTeachers": 20,
+  "totalCourses": 50,
+  "publishedCourses": 40,
+  "draftCourses": 10
+}
+
+USER ITEM:
+{
+  "id": "guid",
+  "email": "user@example.com",
+  "fullName": "John Doe",
+  "role": "User",
+  "status": "Active",
+  "createdAtUtc": "2026-01-01T10:00:00Z"
+}
+
+TEACHER ITEM:
+{
+  "id": "guid",
+  "userId": "guid",
+  "email": "teacher@example.com",
+  "fullName": "Jane Doe",
+  "bio": "Experienced teacher...",
+  "verificationStatus": "Pending",
+  "joinedAtUtc": "2026-01-01T10:00:00Z"
+}
+
+COURSE ITEM:
+{
+  "id": "guid",
+  "title": "Angular Course",
+  "teacherName": "Jane Doe",
+  "status": "Published",
+  "enrollmentCount": 50,
+  "createdAtUtc": "2026-01-01T10:00:00Z"
+}
+
+
+================================================================================
+ERROR HANDLING
+================================================================================
+
+All API calls are protected by the ErrorInterceptor which:
+  - Catches 401 Unauthorized errors
+  - Automatically logs out the user
+  - Redirects to login page
+
+Handle errors in your component:
+
+this.service.getData().subscribe({
+  next: (data) => {
+    // Success - process data
+  },
+  error: (err) => {
+    // Error - show message to user
+    console.error('API Error:', err);
+    this.showErrorMessage('Failed to load data');
+  }
+});
+
+
+================================================================================
+AUTHENTICATION FLOW
+================================================================================
+
+1. User enters email/password on login page
+2. Angular calls: authService.login(email, password)
+3. Backend validates credentials
+4. Backend returns JWT token
+5. Token stored in localStorage as 'currentUser'
+6. JwtInterceptor adds token to all future requests
+7. Backend validates token on protected routes
+8. If token expired: ErrorInterceptor catches 401, logs out, redirects
+
+
+================================================================================
+TESTING CHECKLIST
+================================================================================
+
+[ ] Backend running: http://localhost:8080/health shows "Healthy"
+[ ] Frontend running: http://localhost:4200 opens
+[ ] Login works: Can login with valid credentials
+[ ] Token stored: Check localStorage for 'currentUser'
+[ ] Dashboard loads: Call getDashboard() successfully
+[ ] Users list loads: Call getUsers() successfully
+[ ] Teachers list loads: Call getTeachers() successfully
+[ ] Courses list loads: Call getCourses() successfully
+[ ] Pagination works: Can change pages
+[ ] Search works: Can filter results
+[ ] Status filter works: Can filter by status
+[ ] Logout works: Token removed, redirects to login
+[ ] 401 handling: Expired token auto-logout works
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "Cannot GET /"
+SOLUTION: Frontend not started. Run: npm start in frontend/admin
+
+PROBLEM: CORS errors in browser console
+SOLUTION: Check backend Program.cs has CORS for http://localhost:4200
+
+PROBLEM: 401 Unauthorized on all requests
+SOLUTION: 
+  - Check JWT token in localStorage
+  - Verify user has Admin role for admin endpoints
+  - Check token hasn't expired
+
+PROBLEM: "Network Error" or "Connection Refused"
+SOLUTION: Backend not running. Run: docker-compose up -d
+
+PROBLEM: Cannot find module errors
+SOLUTION: Run: npm install --legacy-peer-deps in frontend/admin
+
+
+================================================================================
+FILES CREATED
+================================================================================
+
+Frontend Models:
+  frontend/admin/src/app/shared/models/admin.models.ts
+
+Frontend Services:
+  frontend/admin/src/app/shared/services/admin/admin-dashboard.service.ts
+  frontend/admin/src/app/shared/services/admin/admin-users.service.ts
+  frontend/admin/src/app/shared/services/admin/admin-teachers.service.ts
+  frontend/admin/src/app/shared/services/admin/admin-courses.service.ts
+
+Frontend Interceptors:
+  frontend/admin/src/app/shared/interceptors/jwt.interceptor.ts
+  frontend/admin/src/app/shared/interceptors/error.interceptor.ts
+
+Backend Controllers:
+  backend/Whale.Api/Controllers/AdminDashboardController.cs
+  backend/Whale.Api/Controllers/AdminUsersController.cs
+  backend/Whale.Api/Controllers/AdminTeachersController.cs
+  backend/Whale.Api/Controllers/AdminCoursesController.cs
+  backend/Whale.Api/Controllers/AuthController.cs
+
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Update your dashboard components to use AdminDashboardService
+2. Create user management page using AdminUsersService
+3. Create teacher management page using AdminTeachersService
+4. Create course management page using AdminCoursesService
+5. Add loading indicators for better UX
+6. Add error messages display
+7. Implement pagination UI components
+8. Add search input fields
+9. Add status filter dropdowns
+10. Test all endpoints thoroughly
+
+
+================================================================================
+Last Updated: January 2, 2026
+================================================================================
