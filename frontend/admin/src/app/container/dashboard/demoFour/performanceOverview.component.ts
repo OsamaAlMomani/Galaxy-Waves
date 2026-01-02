@@ -113,9 +113,6 @@ public chartOptions: Partial<ChartOptions>;
   colors: '#404040',
   },
   markers: {
-  width: 6,
-  height: 6,
-  radius: 20,
   offsetX: -4,
   offsetY:-2,
   },

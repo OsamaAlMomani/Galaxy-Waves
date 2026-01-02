@@ -3942,23 +3942,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\osama\\.nuget\\packages\\": {},
+    "C:\\Users\\Osama Al-Momani\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\Whale.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\Whale.Api.csproj",
       "projectName": "Whale.Api",
-      "projectPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\Whale.Api.csproj",
-      "packagesPath": "C:\\Users\\osama\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\obj\\",
+      "projectPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\Whale.Api.csproj",
+      "packagesPath": "C:\\Users\\Osama Al-Momani\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\osama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Osama Al-Momani\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3974,11 +3974,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Application\\Whale.Application.csproj": {
-              "projectPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Application\\Whale.Application.csproj"
+            "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Application\\Whale.Application.csproj": {
+              "projectPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Application\\Whale.Application.csproj"
             },
-            "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Infrastructure\\Whale.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\osama\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Infrastructure\\Whale.Infrastructure.csproj"
+            "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Infrastructure\\Whale.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Osama Al-Momani\\OneDrive\\Desktop\\Galaxy-PP\\Galaxy-Waves\\whale-platform\\backend\\Whale.Infrastructure\\Whale.Infrastructure.csproj"
             }
           }
         }

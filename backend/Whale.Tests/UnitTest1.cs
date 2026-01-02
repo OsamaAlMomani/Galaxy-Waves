@@ -1,4 +1,4 @@
-﻿namespace Whale.Api.Tests;
+﻿namespace Whale.Tests;
 
 public class UnitTest1
 {

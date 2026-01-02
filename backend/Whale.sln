@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whale.Application", "Whale.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whale.Infrastructure", "Whale.Infrastructure\Whale.Infrastructure.csproj", "{4202FEC6-4419-4E58-907B-737BBE2061C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whale.Api.Tests", "Whale.Api.Tests\Whale.Api.Tests.csproj", "{EA1F59B7-DFB0-4195-8CF7-1D5AFE2690CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whale.Tests", "Whale.Tests\Whale.Tests.csproj", "{EA1F59B7-DFB0-4195-8CF7-1D5AFE2690CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

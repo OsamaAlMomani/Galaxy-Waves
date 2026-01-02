@@ -151,9 +151,6 @@ export class ProfitGrowthComponent {
           colors: '#747474',
         },
         markers: {
-          width: 8,
-          height: 8,
-          radius: 20,
           offsetX: -4,
           offsetY:0,
         },

@@ -204,9 +204,6 @@ export class SalesOverviewComponent implements OnInit  {
             colors: 'text-theme-dark dark:text-white/60',
         },
         markers: {
-          width: 7,
-          height: 7,
-          radius: 20,
           offsetX: -4,
         },
         itemMargin: {
